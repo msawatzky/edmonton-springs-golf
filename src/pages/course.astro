@@ -1,0 +1,278 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const holes = [
+  { hole: 1, blue: 558, white: 523, red: 486, menHcp: 4, ladiesHcp: 4, menPar: 5, ladiesPar: 5 },
+  { hole: 2, blue: 407, white: 387, red: 357, menHcp: 7, ladiesHcp: 7, menPar: 4, ladiesPar: 4 },
+  { hole: 3, blue: 516, white: 490, red: 455, menHcp: 2, ladiesHcp: 2, menPar: 5, ladiesPar: 5 },
+  { hole: 4, blue: 380, white: 368, red: 309, menHcp: 8, ladiesHcp: 8, menPar: 4, ladiesPar: 4 },
+  { hole: 5, blue: 330, white: 314, red: 273, menHcp: 12, ladiesHcp: 12, menPar: 4, ladiesPar: 4 },
+  { hole: 6, blue: 180, white: 170, red: 130, menHcp: 16, ladiesHcp: 16, menPar: 3, ladiesPar: 3 },
+  { hole: 7, blue: 433, white: 401, red: 361, menHcp: 10, ladiesHcp: 10, menPar: 4, ladiesPar: 4 },
+  { hole: 8, blue: 180, white: 165, red: 139, menHcp: 15, ladiesHcp: 15, menPar: 3, ladiesPar: 3 },
+  { hole: 9, blue: 568, white: 550, red: 472, menHcp: 3, ladiesHcp: 3, menPar: 5, ladiesPar: 5 },
+  { hole: 10, blue: 502, white: 438, red: 335, menHcp: 13, ladiesHcp: 13, menPar: 5, ladiesPar: 5 },
+  { hole: 11, blue: 201, white: 178, red: 122, menHcp: 17, ladiesHcp: 17, menPar: 3, ladiesPar: 3 },
+  { hole: 12, blue: 401, white: 364, red: 336, menHcp: 9, ladiesHcp: 9, menPar: 4, ladiesPar: 4 },
+  { hole: 13, blue: 196, white: 158, red: 116, menHcp: 18, ladiesHcp: 18, menPar: 3, ladiesPar: 3 },
+  { hole: 14, blue: 346, white: 316, red: 291, menHcp: 11, ladiesHcp: 11, menPar: 4, ladiesPar: 4 },
+  { hole: 15, blue: 567, white: 511, red: 465, menHcp: 5, ladiesHcp: 5, menPar: 5, ladiesPar: 5 },
+  { hole: 16, blue: 540, white: 457, red: 421, menHcp: 1, ladiesHcp: 1, menPar: 4, ladiesPar: 4 },
+  { hole: 17, blue: 198, white: 180, red: 150, menHcp: 14, ladiesHcp: 14, menPar: 3, ladiesPar: 3 },
+  { hole: 18, blue: 505, white: 465, red: 410, menHcp: 6, ladiesHcp: 6, menPar: 5, ladiesPar: 5 }
+];
+
+const totals = {
+  out: { blue: 3552, white: 3368, red: 2982, par: 37 },
+  in: { blue: 3456, white: 3067, red: 2646, par: 36 },
+  total: { blue: 7008, white: 6435, red: 5628, par: 73 }
+};
+
+const frontNine = holes.slice(0, 9);
+const backNine = holes.slice(9);
+---
+
+<Layout
+  title="Course Information | Edmonton Springs Golf Course"
+  description="Course information and current improvements at Edmonton Springs Golf Course."
+>
+  <section class="bg-white py-16 sm:py-20">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-start">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Course Information</p>
+        <h1 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Play A Better Round</h1>
+        <p class="mt-5 text-sm leading-relaxed text-slate-700 sm:text-base">
+          We are striving to improve the course and the enjoyment for everyone when playing this wonderful game.
+        </p>
+        <p class="mt-4 text-sm leading-relaxed text-slate-700 sm:text-base">
+          We are always looking for methods and ideas to make the course better for everyone, so please let us know
+          any ideas you may have.
+        </p>
+        <ul class="mt-6 space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm font-semibold text-pine-900">
+          <li>Expanded Driving Range.</li>
+          <li>The course is in excellent shape with new larger tee boxes.</li>
+          <li>9 minute tee times in the afternoon to reduce congestion.</li>
+          <li>New greens fees still emphasize great rates for this awesome course.</li>
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href="https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+          >
+            Book Tee Time
+          </a>
+          <a
+            href="#map-scorecard"
+            class="rounded-md border border-pine-700 px-5 py-3 text-sm font-bold uppercase tracking-wide text-pine-800 hover:bg-pine-50"
+          >
+            Map & Scorecard
+          </a>
+          <a
+            href="https://www.edmontonspringsgolf.com/photo-gallery"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-md border border-pine-700 px-5 py-3 text-sm font-bold uppercase tracking-wide text-pine-800 hover:bg-pine-50"
+          >
+            Photo Gallery
+          </a>
+        </div>
+      </div>
+      <img
+        src="https://static.wixstatic.com/media/4e1033_389d596e6e314cfab11c6100152d4a11~mv2.jpg/v1/fill/w_1200,h_654,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Green%2018%20toward%2010.jpg"
+        alt="Green 18 toward 10 at Edmonton Springs"
+        class="h-72 w-full rounded-xl border border-slate-200 object-cover shadow-soft sm:h-80"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section id="map-scorecard" class="scroll-mt-24 bg-cream pb-16 sm:scroll-mt-28 sm:pb-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="grid gap-8 lg:grid-cols-[0.85fr_1.15fr]">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Course Map</p>
+          <h2 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900">Hole Layout</h2>
+          <img
+            src="https://static.wixstatic.com/media/4e1033_dca2219eb5ac421bbf72d188af5588a7~mv2.png/v1/fill/w_727,h_576,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/full%20map.png"
+            alt="Edmonton Springs golf course map"
+            class="mt-4 h-auto w-full rounded-lg border border-slate-200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+          <h2 class="font-display text-2xl font-bold uppercase text-pine-900 sm:text-3xl">Scorecard</h2>
+
+          <div class="mt-4 inline-flex rounded-md border border-slate-200 bg-slate-100 p-1 lg:hidden">
+            <button
+              type="button"
+              data-score-toggle="front"
+              class="rounded px-4 py-2 text-xs font-bold uppercase tracking-wide text-white bg-pine-900"
+              aria-pressed="true"
+            >
+              Front 9
+            </button>
+            <button
+              type="button"
+              data-score-toggle="back"
+              class="rounded px-4 py-2 text-xs font-bold uppercase tracking-wide text-pine-900"
+              aria-pressed="false"
+            >
+              Back 9
+            </button>
+          </div>
+
+          <div class="mt-4 grid gap-4">
+            <div data-score-panel="front" class="rounded-lg border border-slate-200 overflow-hidden">
+              <table class="w-full table-fixed text-center text-[10px] sm:text-xs">
+                <tbody>
+                  <tr class="bg-[#244a82] text-white">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Blue</th>
+                    {frontNine.map((row) => <td class="px-1 py-2 font-semibold">{row.blue}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.out.blue}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">White</th>
+                    {frontNine.map((row) => <td class="px-1 py-2">{row.white}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.out.white}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">M HCP</th>
+                    {frontNine.map((row) => <td class="px-1 py-2">{row.menHcp}</td>)}
+                    <td class="px-1 py-2"></td>
+                  </tr>
+                  <tr class="bg-[#1f5a34] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">M Par</th>
+                    {frontNine.map((row) => <td class="px-1 py-2 font-semibold">{row.menPar}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.out.par}</td>
+                  </tr>
+                  <tr class="bg-[#1f2328] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Hole</th>
+                    {frontNine.map((row) => <td class="px-1 py-2 font-semibold">{row.hole}</td>)}
+                    <td class="px-1 py-2 font-semibold">Out</td>
+                  </tr>
+                  <tr class="bg-[#1f5a34] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">L Par</th>
+                    {frontNine.map((row) => <td class="px-1 py-2 font-semibold">{row.ladiesPar}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.out.par}</td>
+                  </tr>
+                  <tr class="bg-[#812235] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Red</th>
+                    {frontNine.map((row) => <td class="px-1 py-2 font-semibold">{row.red}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.out.red}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">L HCP</th>
+                    {frontNine.map((row) => <td class="px-1 py-2">{row.ladiesHcp}</td>)}
+                    <td class="px-1 py-2"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div data-score-panel="back" class="hidden rounded-lg border border-slate-200 overflow-hidden lg:block">
+              <table class="w-full table-fixed text-center text-[10px] sm:text-xs">
+                <tbody>
+                  <tr class="bg-[#244a82] text-white">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Blue</th>
+                    {backNine.map((row) => <td class="px-1 py-2 font-semibold">{row.blue}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.in.blue}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.out.blue}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.total.blue}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">White</th>
+                    {backNine.map((row) => <td class="px-1 py-2">{row.white}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.in.white}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.out.white}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.total.white}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">M HCP</th>
+                    {backNine.map((row) => <td class="px-1 py-2">{row.menHcp}</td>)}
+                    <td class="px-1 py-2"></td>
+                    <td class="px-1 py-2"></td>
+                    <td class="px-1 py-2"></td>
+                  </tr>
+                  <tr class="bg-[#1f5a34] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">M Par</th>
+                    {backNine.map((row) => <td class="px-1 py-2 font-semibold">{row.menPar}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.in.par}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.out.par}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.total.par}</td>
+                  </tr>
+                  <tr class="bg-[#1f2328] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Hole</th>
+                    {backNine.map((row) => <td class="px-1 py-2 font-semibold">{row.hole}</td>)}
+                    <td class="px-1 py-2 font-semibold">In</td>
+                    <td class="px-1 py-2 font-semibold">Out</td>
+                    <td class="px-1 py-2 font-semibold">Tot</td>
+                  </tr>
+                  <tr class="bg-[#1f5a34] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">L Par</th>
+                    {backNine.map((row) => <td class="px-1 py-2 font-semibold">{row.ladiesPar}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.in.par}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.out.par}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.total.par}</td>
+                  </tr>
+                  <tr class="bg-[#812235] text-white border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">Red</th>
+                    {backNine.map((row) => <td class="px-1 py-2 font-semibold">{row.red}</td>)}
+                    <td class="px-1 py-2 font-semibold">{totals.in.red}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.out.red}</td>
+                    <td class="px-1 py-2 font-semibold">{totals.total.red}</td>
+                  </tr>
+                  <tr class="bg-white text-slate-800 border-t border-slate-200">
+                    <th class="px-2 py-2 text-left font-bold uppercase">L HCP</th>
+                    {backNine.map((row) => <td class="px-1 py-2">{row.ladiesHcp}</td>)}
+                    <td class="px-1 py-2"></td>
+                    <td class="px-1 py-2"></td>
+                    <td class="px-1 py-2"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const scoreButtons = document.querySelectorAll("[data-score-toggle]");
+  const scorePanels = document.querySelectorAll("[data-score-panel]");
+  const mobileQuery = window.matchMedia("(max-width: 1023px)");
+
+  const setActivePanel = (panelKey) => {
+    if (!mobileQuery.matches) {
+      return;
+    }
+
+    scorePanels.forEach((panel) => {
+      const show = panel.getAttribute("data-score-panel") === panelKey;
+      panel.classList.toggle("hidden", !show);
+    });
+
+    scoreButtons.forEach((button) => {
+      const active = button.getAttribute("data-score-toggle") === panelKey;
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+      button.classList.toggle("bg-pine-900", active);
+      button.classList.toggle("text-white", active);
+      button.classList.toggle("text-pine-900", !active);
+    });
+  };
+
+  scoreButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const panelKey = button.getAttribute("data-score-toggle");
+      if (panelKey) {
+        setActivePanel(panelKey);
+      }
+    });
+  });
+</script>

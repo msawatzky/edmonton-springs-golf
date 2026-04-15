@@ -3,10 +3,11 @@ const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 
 const links = [
-  { href: "#about", label: "Course" },
-  { href: "#booking", label: "Booking" },
-  { href: "#rates", label: "Rates" },
-  { href: "#contact", label: "Contact" },
+  { href: "/course", label: "Course" },
+  { href: "/rates", label: "Rates" },
+  { href: "/membership", label: "Membership" },
+  { href: "/leagues", label: "Leagues" },
+  { href: "/contact", label: "Contact" },
   { href: "https://www.edmontonspringsgolf.com/photo-gallery", label: "Gallery", external: true }
 ];
 ---
@@ -38,8 +39,8 @@ const links = [
         <a
           href={link.href}
           class="pt-1 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
-          target={link.external ? "_blank" : undefined}
-          rel={link.external ? "noreferrer" : undefined}
+          target={link.external || link.booking ? "_blank" : undefined}
+          rel={link.external || link.booking ? "noreferrer noopener" : undefined}
         >
           {link.label}
         </a>
@@ -62,8 +63,8 @@ const links = [
           <a
             href={link.href}
             class="block pt-1 text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
-            target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noreferrer" : undefined}
+            target={link.external || link.booking ? "_blank" : undefined}
+            rel={link.external || link.booking ? "noreferrer noopener" : undefined}
           >
             {link.label}
           </a>

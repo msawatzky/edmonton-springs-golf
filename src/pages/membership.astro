@@ -1,0 +1,223 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const seniorPasses = [
+  { plan: "7 day", walk: "$1,865", ride: "$2,865", dailyAdd: "$350" },
+  { plan: "5 week day", walk: "$1,700", ride: "$2,635", dailyAdd: "$285" },
+  { plan: "1st hr week days", walk: "", ride: "", dailyAdd: "$285" }
+];
+
+const adultPasses = [
+  { plan: "7 day", walk: "$2,550", ride: "$3,750", dailyAdd: "$350" },
+  { plan: "5 week day", walk: "$2,160", ride: "$3,210", dailyAdd: "$285" },
+  { plan: "1st hr week days", walk: "$2,625", ride: "$2,975", dailyAdd: "$285" }
+];
+
+const couplesAdult = [
+  { plan: "7 day", walk: "$4,335.00", ride: "$6,575.00" },
+  { plan: "week day", walk: "$3,657.00", ride: "$5,460.00" }
+];
+
+const couplesSenior = [
+  { plan: "7 day", walk: "$3,760.00", ride: "$5,740.00" },
+  { plan: "week day", walk: "$3,175.00", ride: "$4,875.00" }
+];
+
+const partialWeekPasses = [
+  { plan: "adult 1 day/wk", walking: "$650", riding: "$865" },
+  { plan: "adult 2 day/wk", walking: "$1,235", riding: "$1,540" },
+  { plan: "senior 1 day/wk", walking: "$585", riding: "$760" },
+  { plan: "senior 2 day/wk", walking: "$1,115", riding: "$1,395" }
+];
+---
+
+<Layout
+  title="Membership & Passes | Edmonton Springs Golf Course"
+  description="View Edmonton Springs Golf Course membership and pass information."
+>
+  <section class="bg-cream py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Membership</p>
+      <h1 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Membership & Passes</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-700 sm:text-base">
+        Membership options and pass rates are available in the latest Edmonton Springs membership sheets.
+      </p>
+
+      <div class="mt-6 space-y-6">
+        <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+          <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Season and Partial Season Passes</h2>
+          <p class="mt-2 text-sm font-semibold text-slate-900">Rates do not include required GST.</p>
+
+          <div class="mt-4 space-y-4">
+            <div class="overflow-x-auto rounded-lg border border-slate-200">
+              <table class="min-w-full text-left text-sm">
+                <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                  <tr>
+                    <th class="px-4 py-3 font-semibold">Senior</th>
+                    <th class="px-4 py-3 font-semibold">Walk</th>
+                    <th class="px-4 py-3 font-semibold">Ride</th>
+                    <th class="px-4 py-3 font-semibold">1 Small Bucket a Day</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {seniorPasses.map((row) => (
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{row.plan}</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.walk || "-"}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.ride || "-"}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.dailyAdd}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="overflow-x-auto rounded-lg border border-slate-200">
+              <table class="min-w-full text-left text-sm">
+                <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                  <tr>
+                    <th class="px-4 py-3 font-semibold">Adult</th>
+                    <th class="px-4 py-3 font-semibold">Walk</th>
+                    <th class="px-4 py-3 font-semibold">Ride</th>
+                    <th class="px-4 py-3 font-semibold">1 Small Bucket a Day</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {adultPasses.map((row) => (
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{row.plan}</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.walk || "-"}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.ride || "-"}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.dailyAdd}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-2">
+          <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+            <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Couples Season Pass</h2>
+
+            <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200">
+              <table class="min-w-full text-left text-sm">
+                <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                  <tr>
+                    <th class="px-4 py-3 font-semibold">Adult Couples</th>
+                    <th class="px-4 py-3 font-semibold">Walk</th>
+                    <th class="px-4 py-3 font-semibold">Ride</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {couplesAdult.map((row) => (
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{row.plan}</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.walk}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.ride}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200">
+              <table class="min-w-full text-left text-sm">
+                <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                  <tr>
+                    <th class="px-4 py-3 font-semibold">Senior Couples</th>
+                    <th class="px-4 py-3 font-semibold">Walk</th>
+                    <th class="px-4 py-3 font-semibold">Ride</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {couplesSenior.map((row) => (
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{row.plan}</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.walk}</td>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.ride}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+              <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Partial Week Season Pass</h2>
+              <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200">
+                <table class="min-w-full text-left text-sm">
+                  <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                    <tr>
+                      <th class="px-4 py-3 font-semibold">Plan</th>
+                      <th class="px-4 py-3 font-semibold">Walking</th>
+                      <th class="px-4 py-3 font-semibold">Riding</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {partialWeekPasses.map((row) => (
+                      <tr class="border-t border-slate-200">
+                        <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{row.plan}</th>
+                        <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.walking}</td>
+                        <td class="whitespace-nowrap px-4 py-3 text-clubred-700">{row.riding}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <p class="mt-3 text-xs font-semibold uppercase tracking-wide text-slate-700">
+                Must declare which days of the week when purchasing.
+              </p>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
+              <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Corporate Season Rates</h2>
+              <p class="mt-2 text-sm text-slate-700">Prices are per pass and include cart for all adult rates.</p>
+              <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200">
+                <table class="min-w-full text-left text-sm">
+                  <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+                    <tr>
+                      <th class="px-4 py-3 font-semibold">Type</th>
+                      <th class="px-4 py-3 font-semibold">Rate</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">Weekday Only</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">$4,400</td>
+                    </tr>
+                    <tr class="border-t border-slate-200">
+                      <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">7 Days Per Week</th>
+                      <td class="whitespace-nowrap px-4 py-3 text-clubred-700">$6,800</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft">
+              <p class="text-sm text-slate-700">
+                For booking and pass usage questions, contact the pro shop directly.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a
+                  href="https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+                >
+                  Book Tee Time
+                </a>
+                <a href="/contact" class="rounded-md border border-pine-700 px-5 py-3 text-sm font-bold uppercase tracking-wide text-pine-800 hover:bg-pine-50">
+                  Contact Pro Shop
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

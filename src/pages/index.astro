@@ -1,19 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import Rates from "../components/Rates.astro";
 
 const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 ---
 
 <Layout
-  title="Edmonton Springs Golf Course | Modern Course Site"
-  description="A modern, mobile-first Edmonton Springs Golf Course homepage with real media, booking access, and rates information."
+  title="Edmonton Springs Golf Course | Spruce Grove"
+  description="Book Edmonton Springs Golf Course tee times, view rates, and find course details from a fast mobile-friendly homepage."
 >
   <Hero />
 
-  <section id="booking" class="bg-cream py-16 sm:py-20">
+  <section id="booking" class="bg-white py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft sm:p-6">
         <div class="mb-4 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-center sm:justify-between">
@@ -30,11 +29,9 @@ const bookingUrl =
             Open Full Booking Page
           </a>
         </div>
-
         <p class="mb-4 text-sm text-slate-700">
           Use the embedded booking tool below. If it does not load on your device, use "Open Full Booking Page".
         </p>
-
         <div class="overflow-hidden rounded-xl border border-slate-200">
           <iframe
             src={bookingUrl}
@@ -48,39 +45,22 @@ const bookingUrl =
     </div>
   </section>
 
-  <Rates />
-
   <section class="bg-pine-900 py-16 text-white sm:py-20">
     <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
       <div>
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">What is New</p>
-        <h2 class="mt-2 font-display text-3xl font-bold uppercase sm:text-4xl">Course Improvements</h2>
-        <ul class="mt-6 space-y-3 text-sm leading-relaxed text-slate-100 sm:text-base">
-          <li>Expanded Driving Range.</li>
-          <li>The course is in excellent shape with new larger tee boxes.</li>
-          <li>9 minute tee times in the afternoon to reduce congestion.</li>
-          <li>New greens fees still emphasize great rates for this awesome course.</li>
-        </ul>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a
-            href="https://www.edmontonspringsgolf.com/_files/ugd/4e1033_af407a5239fa4051af54800a121dae94.pdf"
-            target="_blank"
-            rel="noreferrer"
-            class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
-          >
-            Spring Newsletter
-          </a>
-          <a
-            href="https://www.edmontonspringsgolf.com/email-me"
-            target="_blank"
-            rel="noreferrer"
-            class="rounded-md border border-white/40 bg-black/20 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-white/10"
-          >
-            Subscribe Here
-          </a>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">Plan Your Visit</p>
+        <h2 class="mt-2 font-display text-3xl font-bold uppercase sm:text-4xl">Everything In One Place</h2>
+        <p class="mt-4 text-sm leading-relaxed text-slate-100 sm:text-base">
+          Long-form content now lives on dedicated pages, making it easier to find detailed league information,
+          memberships, full pricing, booking, and directions.
+        </p>
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
+          <a href="/course" class="rounded-md border border-white/30 bg-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/20">Course Info</a>
+          <a href="/membership" class="rounded-md border border-white/30 bg-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/20">Membership</a>
+          <a href="/leagues" class="rounded-md border border-white/30 bg-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/20">Leagues & Events</a>
+          <a href="/contact" class="rounded-md border border-white/30 bg-white/10 px-4 py-3 text-sm font-semibold uppercase tracking-wide text-white hover:bg-white/20">Contact & Directions</a>
         </div>
       </div>
-
       <img
         src="https://static.wixstatic.com/media/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg/v1/fill/w_566,h_398,al_c,q_80,usm_0.66_1.00_0.01/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg"
         alt="Edmonton Springs golf course scenic shot"
@@ -91,7 +71,7 @@ const bookingUrl =
     </div>
   </section>
 
-  <section id="contact" class="bg-cream py-16 sm:py-20">
+  <section class="bg-cream py-16 sm:py-20">
     <div class="mx-auto max-w-6xl px-4 sm:px-6">
       <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
         <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Contact Us</p>
@@ -110,13 +90,8 @@ const bookingUrl =
               right on Township Rd 532A, left on RR 264.
             </p>
             <div class="mt-4 flex flex-wrap gap-3">
-              <a
-                href="https://www.edmontonspringsgolf.com/contact-us"
-                target="_blank"
-                rel="noreferrer"
-                class="rounded-md bg-pine-700 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-pine-900"
-              >
-                View on Map
+              <a href="/contact" class="rounded-md bg-pine-700 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-pine-900">
+                Full Contact Page
               </a>
               <a
                 href={bookingUrl}
