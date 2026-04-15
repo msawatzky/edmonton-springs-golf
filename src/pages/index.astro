@@ -1,0 +1,96 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Rates from "../components/Rates.astro";
+---
+
+<Layout
+  title="Edmonton Springs Golf Resort | Modern Course Site"
+  description="A modern, mobile-first Edmonton Springs Golf Resort homepage with real media, booking access, and rates information."
+>
+  <Hero />
+  <Rates />
+
+  <section class="bg-pine-900 py-16 text-white sm:py-20">
+    <div class="mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-200">What is New</p>
+        <h2 class="mt-2 font-display text-3xl font-bold uppercase sm:text-4xl">Course Improvements</h2>
+        <ul class="mt-6 space-y-3 text-sm leading-relaxed text-slate-100 sm:text-base">
+          <li>Expanded Driving Range.</li>
+          <li>The course is in excellent shape with new larger tee boxes.</li>
+          <li>9 minute tee times in the afternoon to reduce congestion.</li>
+          <li>New greens fees still emphasize great rates for this awesome course.</li>
+        </ul>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a
+            href="https://www.edmontonspringsgolf.com/_files/ugd/4e1033_af407a5239fa4051af54800a121dae94.pdf"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+          >
+            Spring Newsletter
+          </a>
+          <a
+            href="https://www.edmontonspringsgolf.com/email-me"
+            target="_blank"
+            rel="noreferrer"
+            class="rounded-md border border-white/40 bg-black/20 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-white/10"
+          >
+            Subscribe Here
+          </a>
+        </div>
+      </div>
+
+      <img
+        src="https://static.wixstatic.com/media/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg/v1/fill/w_566,h_398,al_c,q_80,usm_0.66_1.00_0.01/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg"
+        alt="Edmonton Springs golf course scenic shot"
+        class="h-72 w-full rounded-xl border border-white/20 object-cover shadow-soft sm:h-80"
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  </section>
+
+  <section id="contact" class="bg-cream py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Contact Us</p>
+        <h2 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Visit Edmonton Springs</h2>
+        <div class="mt-6 grid gap-6 text-sm text-slate-700 sm:grid-cols-2 sm:text-base">
+          <div>
+            <p class="font-semibold text-slate-900">Edmonton Springs Golf Resort</p>
+            <p>#9-53302 Range Road 264</p>
+            <p>Spruce Grove, AB T7X 3H5</p>
+            <p class="mt-2">5 minutes West of Edmonton, 5 minutes East of Spruce Grove.</p>
+          </div>
+          <div>
+            <p><span class="font-semibold text-slate-900">Phone:</span> (780) 962-6500</p>
+            <p class="mt-2">
+              <span class="font-semibold text-slate-900">Directions:</span> 1 km north of Yellowhead on highway 44,
+              right on Township Rd 532A, left on RR 264.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a
+                href="https://www.edmontonspringsgolf.com/contact-us"
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-md bg-pine-700 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-white hover:bg-pine-900"
+              >
+                View on Map
+              </a>
+              <a
+                href="https://www.edmontonspringsgolf.com/"
+                target="_blank"
+                rel="noreferrer"
+                class="rounded-md border border-clubred-700 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-clubred-700 hover:bg-clubred-100"
+              >
+                Book a Tee Time
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

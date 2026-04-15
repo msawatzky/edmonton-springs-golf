@@ -1,0 +1,92 @@
+---
+const links = [
+  { href: "#about", label: "Course" },
+  { href: "#rates", label: "Rates" },
+  { href: "#contact", label: "Contact" },
+  { href: "https://www.edmontonspringsgolf.com/photo-gallery", label: "Gallery", external: true }
+];
+---
+
+<header class="sticky top-0 z-40 border-b border-white/15 bg-pine-900/95 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+    <a href="/" class="flex items-center gap-3">
+      <img
+        src="https://static.wixstatic.com/media/4e1033_deeff731ccb24015b72d28ff4e45d522.png/v1/fill/w_454,h_167,al_c,lg_1,q_85,enc_avif,quality_auto/4e1033_deeff731ccb24015b72d28ff4e45d522.png"
+        alt="Edmonton Springs Golf Resort"
+        class="h-10 w-auto rounded-sm"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="hidden text-xs font-semibold uppercase tracking-[0.2em] text-slate-200 sm:block">Spruce Grove, AB</span>
+    </a>
+
+    <button
+      id="nav-toggle"
+      class="inline-flex items-center rounded-md border border-white/40 px-3 py-2 text-sm font-semibold text-white md:hidden"
+      type="button"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      Menu
+    </button>
+
+    <nav class="hidden items-center gap-6 md:flex" aria-label="Main">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          class="text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="https://www.edmontonspringsgolf.com/"
+        target="_blank"
+        rel="noreferrer"
+        class="rounded-md bg-clubred-500 px-4 py-2 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+      >
+        Book Now
+      </a>
+    </nav>
+  </div>
+
+  <nav id="mobile-nav" class="hidden border-t border-white/10 bg-pine-900 px-4 pb-4 pt-3 md:hidden" aria-label="Mobile">
+    <ul class="space-y-3">
+      {links.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="block text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
+            target={link.external ? "_blank" : undefined}
+            rel={link.external ? "noreferrer" : undefined}
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+      <li>
+        <a
+          href="https://www.edmontonspringsgolf.com/"
+          target="_blank"
+          rel="noreferrer"
+          class="block rounded-md bg-clubred-500 px-4 py-2 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+        >
+          Book Now
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const navToggle = document.querySelector("#nav-toggle");
+  const mobileNav = document.querySelector("#mobile-nav");
+
+  navToggle?.addEventListener("click", () => {
+    const expanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", String(!expanded));
+    mobileNav?.classList.toggle("hidden");
+  });
+</script>
