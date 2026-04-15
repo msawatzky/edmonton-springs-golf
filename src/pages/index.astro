@@ -2,13 +2,52 @@
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Rates from "../components/Rates.astro";
+
+const bookingUrl =
+  "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 ---
 
 <Layout
-  title="Edmonton Springs Golf Resort | Modern Course Site"
-  description="A modern, mobile-first Edmonton Springs Golf Resort homepage with real media, booking access, and rates information."
+  title="Edmonton Springs Golf Course | Modern Course Site"
+  description="A modern, mobile-first Edmonton Springs Golf Course homepage with real media, booking access, and rates information."
 >
   <Hero />
+
+  <section id="booking" class="bg-cream py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-soft sm:p-6">
+        <div class="mb-4 flex flex-col gap-3 sm:mb-5 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Tee Time Booking</p>
+            <h2 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Book On Site</h2>
+          </div>
+          <a
+            href={bookingUrl}
+            target="_blank"
+            rel="noreferrer noopener"
+            class="inline-flex items-center justify-center rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+          >
+            Open Full Booking Page
+          </a>
+        </div>
+
+        <p class="mb-4 text-sm text-slate-700">
+          Use the embedded booking tool below. If it does not load on your device, use "Open Full Booking Page".
+        </p>
+
+        <div class="overflow-hidden rounded-xl border border-slate-200">
+          <iframe
+            src={bookingUrl}
+            title="Edmonton Springs tee time booking"
+            loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"
+            class="h-[820px] w-full bg-white"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <Rates />
 
   <section class="bg-pine-900 py-16 text-white sm:py-20">
@@ -59,7 +98,7 @@ import Rates from "../components/Rates.astro";
         <h2 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Visit Edmonton Springs</h2>
         <div class="mt-6 grid gap-6 text-sm text-slate-700 sm:grid-cols-2 sm:text-base">
           <div>
-            <p class="font-semibold text-slate-900">Edmonton Springs Golf Resort</p>
+            <p class="font-semibold text-slate-900">Edmonton Springs Golf Course</p>
             <p>#9-53302 Range Road 264</p>
             <p>Spruce Grove, AB T7X 3H5</p>
             <p class="mt-2">5 minutes West of Edmonton, 5 minutes East of Spruce Grove.</p>
@@ -80,9 +119,9 @@ import Rates from "../components/Rates.astro";
                 View on Map
               </a>
               <a
-                href="https://www.edmontonspringsgolf.com/"
+                href={bookingUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noreferrer noopener"
                 class="rounded-md border border-clubred-700 px-4 py-2 text-sm font-semibold uppercase tracking-wide text-clubred-700 hover:bg-clubred-100"
               >
                 Book a Tee Time

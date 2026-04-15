@@ -1,7 +1,12 @@
+---
+const bookingUrl =
+  "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
+---
+
 <section id="about" class="relative isolate overflow-hidden bg-pine-900 text-white">
   <img
     src="https://static.wixstatic.com/media/4e1033_389d596e6e314cfab11c6100152d4a11~mv2.jpg/v1/fill/w_1200,h_654,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Green%2018%20toward%2010.jpg"
-    alt="Green 18 toward 10 at Edmonton Springs Golf Resort"
+    alt="Green 18 toward 10 at Edmonton Springs Golf Course"
     class="absolute inset-0 h-full w-full object-cover"
     loading="eager"
     fetchpriority="high"
@@ -14,7 +19,7 @@
       Opening about April 22
     </p>
     <h1 class="max-w-4xl font-display text-4xl font-bold uppercase leading-tight sm:text-5xl lg:text-6xl">
-      Edmonton Springs Golf Resort
+      Edmonton Springs Golf Course
     </h1>
     <p class="mt-6 max-w-3xl text-base leading-relaxed text-slate-100 sm:text-lg">
       Our goal is to make your golf experience more enjoyable every time you visit us. We want you to come out and
@@ -25,9 +30,9 @@
 
     <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
       <a
-        href="https://www.edmontonspringsgolf.com/"
+        href={bookingUrl}
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer noopener"
         class="inline-flex items-center justify-center rounded-md bg-clubred-500 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
       >
         Book a Tee Time
