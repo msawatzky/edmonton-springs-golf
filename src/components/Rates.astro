@@ -4,6 +4,20 @@ const rangeRates = [
   { bucket: "Medium", balls: "~45 balls", price: "$10" },
   { bucket: "Large", balls: "~65 balls", price: "$13" }
 ];
+
+const eighteenHoleRates = [
+  { tier: "Adult", weekday: "$47.00", weekend: "$63.50", twilight: "$35.50" },
+  { tier: "Senior", weekday: "$40.00", weekend: "$54.00", twilight: "$30.50" },
+  { tier: "Student", weekday: "$24.00", weekend: "$32.00", twilight: "$20.00" },
+  { tier: "12 & Under", weekday: "$14.00", weekend: "$17.00", twilight: "$10.00" }
+];
+
+const nineHoleRates = [
+  { tier: "Adult", weekday: "$28.50", weekend: "$38.00", twilight: "$24.00" },
+  { tier: "Senior", weekday: "$24.00", weekend: "$32.50", twilight: "$21.00" },
+  { tier: "Student", weekday: "$15.00", weekend: "$20.00", twilight: "$15.00" },
+  { tier: "12 & Under", weekday: "$8.00", weekend: "$9.00", twilight: "$7.00" }
+];
 ---
 
 <section id="rates" class="bg-white py-16 sm:py-20">
@@ -12,18 +26,83 @@ const rangeRates = [
       <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Green Fees</p>
       <h2 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Rates & Information</h2>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-slate-700 sm:text-base">
-        Fees are displayed as you are booking a tee time reflecting the day and time. Current green-fee media is shown
-        below from the live Edmonton Springs server.
+        Daily golf rates are listed below from the current Edmonton Springs fee sheet. All rates do not include GST.
       </p>
 
-      <div class="mt-6 overflow-hidden rounded-xl border border-slate-200 bg-slate-50 shadow-soft">
-        <img
-          src="https://static.wixstatic.com/media/4e1033_baf85d26dc1c434ab5d7f50f1193f20d~mv2.png/v1/fill/w_469,h_600,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/4e1033_baf85d26dc1c434ab5d7f50f1193f20d~mv2.png"
-          alt="Edmonton Springs Green Fees"
-          class="h-auto w-full"
-          loading="lazy"
-          decoding="async"
-        />
+      <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-4 shadow-soft sm:p-5">
+        <h3 class="font-display text-2xl font-bold uppercase text-pine-900">Daily Golf Rates 2026</h3>
+        <p class="mt-1 text-sm text-slate-700">All rates do not include GST.</p>
+
+        <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <table class="min-w-full text-left text-sm">
+            <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+              <tr>
+                <th scope="col" class="px-4 py-3 font-semibold">18 Holes</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Weekday</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Weekend</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Twilight</th>
+              </tr>
+            </thead>
+            <tbody>
+              {eighteenHoleRates.map((rate) => (
+                <tr class="border-t border-slate-200">
+                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{rate.tier}</th>
+                  <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekday}</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekend}</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">{rate.twilight}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <table class="min-w-full text-left text-sm">
+            <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+              <tr>
+                <th scope="col" class="px-4 py-3 font-semibold">9 Holes</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Weekday</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Weekend</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Twilight</th>
+              </tr>
+            </thead>
+            <tbody>
+              {nineHoleRates.map((rate) => (
+                <tr class="border-t border-slate-200">
+                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{rate.tier}</th>
+                  <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekday}</td>
+                  <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekend}</td>
+                  <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">{rate.twilight}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="mt-4 overflow-x-auto rounded-lg border border-slate-200 bg-white">
+          <table class="min-w-full text-left text-sm">
+            <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
+              <tr>
+                <th scope="col" class="px-4 py-3 font-semibold">Cart Rental (Per Seat)</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-t border-slate-200">
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">18 Holes</th>
+                <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$20.00</td>
+              </tr>
+              <tr class="border-t border-slate-200">
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">9 Holes</th>
+                <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$11.50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mt-4 text-sm text-slate-700">
+          Players not willing to share a cart will pay $35 for 18 holes and $20 for 9 holes.
+        </p>
       </div>
     </div>
 

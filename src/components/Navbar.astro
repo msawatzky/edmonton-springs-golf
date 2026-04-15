@@ -37,7 +37,7 @@ const links = [
       {links.map((link) => (
         <a
           href={link.href}
-          class="text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
+          class="pt-1 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
           target={link.external ? "_blank" : undefined}
           rel={link.external ? "noreferrer" : undefined}
         >
@@ -61,7 +61,7 @@ const links = [
         <li>
           <a
             href={link.href}
-            class="block text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
+            class="block pt-1 text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
             target={link.external ? "_blank" : undefined}
             rel={link.external ? "noreferrer" : undefined}
           >
@@ -74,7 +74,7 @@ const links = [
           href={bookingUrl}
           target="_blank"
           rel="noreferrer noopener"
-          class="block rounded-md bg-clubred-500 px-4 py-2 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+          class="block rounded-md bg-clubred-500 px-4 pb-2 pt-3 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
         >
           Book Now
         </a>
@@ -86,10 +86,18 @@ const links = [
 <script>
   const navToggle = document.querySelector("#nav-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
+  const mobileNavLinks = mobileNav?.querySelectorAll("a");
 
   navToggle?.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
     navToggle.setAttribute("aria-expanded", String(!expanded));
     mobileNav?.classList.toggle("hidden");
+  });
+
+  mobileNavLinks?.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileNav?.classList.add("hidden");
+      navToggle?.setAttribute("aria-expanded", "false");
+    });
   });
 </script>
