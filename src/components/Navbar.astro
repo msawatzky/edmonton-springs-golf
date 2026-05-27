@@ -2,13 +2,36 @@
 const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 
-const links = [
-  { href: "/course", label: "Course" },
-  { href: "/rates", label: "Rates" },
-  { href: "/membership", label: "Membership" },
-  { href: "/leagues", label: "Leagues" },
-  { href: "/contact", label: "Contact" },
-  { href: "https://www.edmontonspringsgolf.com/photo-gallery", label: "Gallery", external: true }
+interface NavChild {
+  href: string;
+  label: string;
+}
+
+interface NavItem {
+  label: string;
+  href?: string;
+  children?: NavChild[];
+}
+
+const navItems: NavItem[] = [
+  {
+    label: "Golf",
+    children: [
+      { href: "/rates", label: "Rates" },
+      { href: "/membership", label: "Membership" },
+      { href: "/leagues", label: "Leagues" },
+      { href: "/tournaments", label: "Tournaments" },
+    ],
+  },
+  {
+    label: "Course",
+    children: [
+      { href: "/course", label: "Map & Scorecard" },
+      { href: "/gallery", label: "Photo Gallery" },
+    ],
+  },
+  { label: "Instruction", href: "/youth" },
+  { label: "Contact & Resources", href: "/contact" },
 ];
 ---
 
@@ -34,17 +57,44 @@ const links = [
       Menu
     </button>
 
+    <!-- Desktop nav -->
     <nav class="hidden items-center gap-6 md:flex" aria-label="Main">
-      {links.map((link) => (
-        <a
-          href={link.href}
-          class="pt-1 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
-          target={link.external || link.booking ? "_blank" : undefined}
-          rel={link.external || link.booking ? "noreferrer noopener" : undefined}
-        >
-          {link.label}
-        </a>
-      ))}
+      {navItems.map((item) =>
+        item.children ? (
+          <div class="group relative">
+            <button
+              type="button"
+              class="flex items-center gap-1 py-1 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
+            >
+              {item.label}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 opacity-60 transition-transform duration-200 group-hover:rotate-180" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <!-- Invisible bridge covers the gap so hover isn't lost moving to dropdown -->
+            <div class="absolute left-0 top-full h-2 w-full"></div>
+            <ul class="invisible absolute left-0 top-[calc(100%+0.5rem)] w-52 rounded-xl border border-white/10 bg-pine-900 py-1.5 opacity-0 shadow-xl transition-all duration-150 group-hover:visible group-hover:opacity-100">
+              {item.children.map((child) => (
+                <li>
+                  <a
+                    href={child.href}
+                    class="block px-4 py-2.5 text-sm font-semibold uppercase tracking-wide text-slate-300 hover:bg-white/10 hover:text-white"
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <a
+            href={item.href}
+            class="py-1 text-sm font-semibold uppercase tracking-wider text-slate-200 hover:text-white"
+          >
+            {item.label}
+          </a>
+        )
+      )}
       <a
         href={bookingUrl}
         target="_blank"
@@ -56,26 +106,53 @@ const links = [
     </nav>
   </div>
 
+  <!-- Mobile nav -->
   <nav id="mobile-nav" class="hidden border-t border-white/10 bg-pine-900 px-4 pb-4 pt-3 md:hidden" aria-label="Mobile">
-    <ul class="space-y-3">
-      {links.map((link) => (
-        <li>
-          <a
-            href={link.href}
-            class="block pt-1 text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
-            target={link.external || link.booking ? "_blank" : undefined}
-            rel={link.external || link.booking ? "noreferrer noopener" : undefined}
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-      <li>
+    <ul class="space-y-1">
+      {navItems.map((item, i) =>
+        item.children ? (
+          <li>
+            <button
+              type="button"
+              class="mobile-accordion-toggle flex w-full items-center justify-between rounded-md px-2 py-2.5 text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
+              aria-expanded="false"
+              data-target={`mobile-sub-${i}`}
+            >
+              <span>{item.label}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="accordion-chevron h-4 w-4 opacity-60 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <ul id={`mobile-sub-${i}`} class="hidden space-y-0.5 pb-1 pl-3 pt-0.5">
+              {item.children.map((child) => (
+                <li>
+                  <a
+                    href={child.href}
+                    class="mobile-nav-link block rounded-md px-2 py-2 text-sm font-semibold uppercase tracking-wide text-slate-400 hover:text-white"
+                  >
+                    {child.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ) : (
+          <li>
+            <a
+              href={item.href}
+              class="mobile-nav-link block rounded-md px-2 py-2.5 text-sm font-semibold uppercase tracking-wide text-slate-200 hover:text-white"
+            >
+              {item.label}
+            </a>
+          </li>
+        )
+      )}
+      <li class="pt-2">
         <a
           href={bookingUrl}
           target="_blank"
           rel="noreferrer noopener"
-          class="block rounded-md bg-clubred-500 px-4 pb-2 pt-3 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
+          class="block rounded-md bg-clubred-500 px-4 py-3 text-center text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
         >
           Book Now
         </a>
@@ -87,7 +164,6 @@ const links = [
 <script>
   const navToggle = document.querySelector("#nav-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
-  const mobileNavLinks = mobileNav?.querySelectorAll("a");
 
   navToggle?.addEventListener("click", () => {
     const expanded = navToggle.getAttribute("aria-expanded") === "true";
@@ -95,7 +171,20 @@ const links = [
     mobileNav?.classList.toggle("hidden");
   });
 
-  mobileNavLinks?.forEach((link) => {
+  document.querySelectorAll<HTMLButtonElement>(".mobile-accordion-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.dataset.target;
+      const submenu = targetId ? document.getElementById(targetId) : null;
+      const chevron = btn.querySelector<SVGElement>(".accordion-chevron");
+      const expanded = btn.getAttribute("aria-expanded") === "true";
+
+      btn.setAttribute("aria-expanded", String(!expanded));
+      submenu?.classList.toggle("hidden");
+      chevron?.classList.toggle("rotate-180");
+    });
+  });
+
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       mobileNav?.classList.add("hidden");
       navToggle?.setAttribute("aria-expanded", "false");

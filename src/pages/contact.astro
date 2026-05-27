@@ -1,16 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const resources = [
+  {
+    title: "May 2026 Newsletter",
+    description: "Course updates, league news, and seasonal highlights from Edmonton Springs.",
+    href: "/documents/May 2026 Newsletter - ESG.pdf",
+    label: "Download PDF",
+    date: "May 2026"
+  }
+];
 ---
 
 <Layout
-  title="Contact | Edmonton Springs Golf Course"
-  description="Contact details and directions for Edmonton Springs Golf Course in Spruce Grove."
+  title="Contact & Resources | Edmonton Springs Golf Course"
+  description="Contact the Edmonton Springs Golf Course Pro Shop, get directions, and download newsletters and course resources."
 >
   <section class="bg-cream py-16 sm:py-20">
-    <div class="mx-auto max-w-6xl px-4 sm:px-6">
-      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
-        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Contact Us</p>
+    <div class="mx-auto max-w-6xl space-y-6 px-4 sm:px-6">
+
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Contact & Resources</p>
         <h1 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Edmonton Springs Golf Course</h1>
+      </div>
+
+      <!-- Contact card -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+        <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Get In Touch</h2>
         <div class="mt-6 grid gap-8 text-sm text-slate-700 sm:grid-cols-2 sm:text-base">
           <div>
             <p class="font-semibold text-slate-900">Address</p>
@@ -44,6 +60,33 @@ import Layout from "../layouts/Layout.astro";
           </div>
         </div>
       </div>
+
+      <!-- Resources / Downloads -->
+      <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+        <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Downloads & Resources</h2>
+        <p class="mt-2 text-sm text-slate-700">Newsletters and course documents available to download.</p>
+
+        <ul class="mt-6 space-y-3">
+          {resources.map((resource) => (
+            <li class="flex items-center justify-between gap-4 rounded-lg border border-slate-200 bg-cream px-5 py-4">
+              <div>
+                <p class="text-sm font-semibold text-slate-900">{resource.title}</p>
+                <p class="mt-0.5 text-xs text-slate-500">{resource.date}</p>
+                <p class="mt-1 text-sm text-slate-700">{resource.description}</p>
+              </div>
+              <a
+                href={resource.href}
+                target="_blank"
+                rel="noreferrer noopener"
+                class="shrink-0 rounded-md bg-pine-900 px-4 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-pine-700"
+              >
+                {resource.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
     </div>
   </section>
 </Layout>

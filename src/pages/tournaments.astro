@@ -1,0 +1,36 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Tournaments | Edmonton Springs Golf Course"
+  description="Tournament schedules, formats, and registration at Edmonton Springs Golf Course."
+>
+  <section class="bg-cream py-16 sm:py-20">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Tournaments</p>
+      <h1 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Tournament Schedule</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-700 sm:text-base">
+        Tournament details and registration information will be posted here as dates are confirmed. Check back soon or contact the Pro Shop for upcoming event information.
+      </p>
+
+      <div class="mt-8 rounded-xl border border-slate-200 bg-white p-6 shadow-soft sm:p-8">
+        <p class="text-sm font-semibold text-slate-900">Questions about tournaments?</p>
+        <p class="mt-2 text-sm text-slate-700">Contact the Pro Shop directly for current tournament availability and registration.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a href="/contact" class="rounded-md bg-pine-900 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-pine-700">
+            Contact Pro Shop
+          </a>
+          <a
+            href="https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23"
+            target="_blank"
+            rel="noreferrer noopener"
+            class="rounded-md border border-pine-700 px-5 py-3 text-sm font-bold uppercase tracking-wide text-pine-800 hover:bg-pine-50"
+          >
+            Book Tee Time
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
