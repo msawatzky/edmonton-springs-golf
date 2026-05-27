@@ -1,0 +1,12 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LeagueDetails from "../../components/LeagueDetails.astro";
+import { ladiesLeague } from "../../data/leagues";
+---
+
+<Layout
+  title="Ladies League | Edmonton Springs Golf Course"
+  description="Ladies League details for Edmonton Springs Golf Course, including Monday schedule, fees, team registration, and tournament information."
+>
+  <LeagueDetails league={ladiesLeague} />
+</Layout>
