@@ -1,5 +1,6 @@
 ---
 import type { LeaguePageData } from "../data/leagues";
+import LeagueApplicationModal from "./LeagueApplicationModal.astro";
 
 interface Props {
   league: LeaguePageData;
@@ -34,6 +35,13 @@ const buttonClasses = {
       </div>
 
       <div class="mt-6 flex flex-wrap gap-3">
+        <button
+          type="button"
+          data-league-apply-open={league.slug}
+          class={buttonClasses.primary}
+        >
+          {league.application.buttonLabel}
+        </button>
         {league.ctas.map((cta) => (
           <a
             href={cta.href}
@@ -101,7 +109,7 @@ const buttonClasses = {
         </div>
 
         <div class="rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6">
-          <h2 class="font-display text-2xl font-bold uppercase text-pine-900">Tournament Highlights</h2>
+          <h2 class="font-display text-2xl font-bold uppercase text-pine-900">{league.highlightsTitle ?? "Tournament Highlights"}</h2>
           <ul class="mt-4 space-y-2 text-sm leading-relaxed text-slate-700">
             {league.tournamentHighlights.map((item) => (
               <li class="list-disc ml-5">{item}</li>
@@ -142,3 +150,5 @@ const buttonClasses = {
     </div>
   </div>
 </section>
+
+<LeagueApplicationModal slug={league.slug} application={league.application} />

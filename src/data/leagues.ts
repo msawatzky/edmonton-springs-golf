@@ -1,3 +1,6 @@
+import type { LeagueApplicationConfig } from "./leagueApplications";
+import { ladiesLeagueApplication, mensLeagueApplication } from "./leagueApplications";
+
 export interface LeagueCard {
   label: string;
   href: string;
@@ -37,10 +40,12 @@ export interface LeaguePageData {
   registrationSteps: string[];
   feeSections: LeagueFeeSection[];
   scheduleSections: LeagueSection[];
+  highlightsTitle?: string;
   tournamentHighlights: string[];
   policies: LeagueSection[];
   contacts: LeagueDetailRow[];
   ctas: LeagueCta[];
+  application: LeagueApplicationConfig;
 }
 
 export const leagueCards: LeagueCard[] = [
@@ -148,7 +153,8 @@ export const menLeague: LeaguePageData = {
       external: true
     },
     { label: "Contact Pro Shop", href: "/contact", variant: "secondary" }
-  ]
+  ],
+  application: mensLeagueApplication
 };
 
 export const ladiesLeague: LeaguePageData = {
@@ -199,14 +205,16 @@ export const ladiesLeague: LeaguePageData = {
         "May 11 and May 25 (registration day and first round on May 11).",
         "June 1, 8, 15, 22, and 29.",
         "July 6, 13, 20, and 27.",
-        "August 10, 17, 24, and 31."
+        "August 10, 17, 24, and 31.",
+        "Sunday, September 13 (16th and final league round; time to be confirmed)."
       ]
     },
     {
       title: "Year-End Tournament",
-      items: ["Sunday, September 13 (time to be confirmed)."]
+      items: ["Date to be announced."]
     }
   ],
+  highlightsTitle: "League Highlights",
   tournamentHighlights: [
     "Weekly lucky draws and hole prizes begin May 11.",
     "Front and back nines alternate throughout the season.",
@@ -243,5 +251,6 @@ export const ladiesLeague: LeaguePageData = {
       external: true
     },
     { label: "Contact Pro Shop", href: "/contact", variant: "secondary" }
-  ]
+  ],
+  application: ladiesLeagueApplication
 };

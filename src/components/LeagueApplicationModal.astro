@@ -1,0 +1,142 @@
+---
+import type { LeagueApplicationConfig } from "../data/leagueApplications";
+
+interface Props {
+  slug: string;
+  application: LeagueApplicationConfig;
+}
+
+const { slug, application } = Astro.props;
+
+const inputClass =
+  "mt-1 w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 shadow-sm focus:border-pine-700 focus:outline-none focus:ring-2 focus:ring-pine-700/20";
+const labelClass = "block text-sm font-semibold text-slate-900";
+---
+
+<dialog
+  id={`league-application-${slug}`}
+  class="league-application-dialog fixed inset-0 z-50 m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-0 backdrop:bg-black/70 open:flex open:items-center open:justify-center"
+  aria-labelledby={`league-application-title-${slug}`}
+>
+  <div class="relative mx-4 flex max-h-[92vh] w-full max-w-5xl flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl">
+    <div class="flex items-start justify-between gap-4 border-b border-slate-200 bg-cream px-5 py-4 sm:px-6">
+      <h2 id={`league-application-title-${slug}`} class="font-display text-2xl font-bold uppercase text-pine-900 sm:text-3xl">
+        {application.modalTitle}
+      </h2>
+      <button
+        type="button"
+        data-league-apply-close
+        class="rounded-md border border-slate-300 px-3 py-2 text-sm font-semibold uppercase tracking-wide text-slate-700 hover:bg-white"
+      >
+        Close
+      </button>
+    </div>
+
+    <div class="grid flex-1 gap-0 overflow-y-auto lg:grid-cols-[1.05fr_0.95fr]">
+      <div class="border-b border-slate-200 p-5 sm:p-6 lg:border-b-0 lg:border-r">
+        {!application.formspreeAction && (
+          <p class="mb-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-900">
+            Formspree is not configured yet. Add your form URL to enable submissions.
+          </p>
+        )}
+
+        <form
+          action={application.formspreeAction || undefined}
+          method="POST"
+          class="space-y-4"
+        >
+          <input type="hidden" name="_subject" value={application.modalTitle} />
+
+          {application.fields.map((field) => (
+            <div>
+              <label class={labelClass} for={`${slug}-${field.name}`}>
+                {field.label}
+                {field.required && <span class="text-clubred-700"> *</span>}
+              </label>
+              {field.type === "textarea" ? (
+                <textarea
+                  id={`${slug}-${field.name}`}
+                  name={field.name}
+                  rows={field.rows ?? 4}
+                  required={field.required}
+                  placeholder={field.placeholder}
+                  class={inputClass}
+                ></textarea>
+              ) : (
+                <input
+                  id={`${slug}-${field.name}`}
+                  name={field.name}
+                  type={field.type}
+                  required={field.required}
+                  placeholder={field.placeholder}
+                  class={inputClass}
+                />
+              )}
+            </div>
+          ))}
+
+          <button
+            type="submit"
+            class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700 disabled:cursor-not-allowed disabled:opacity-60"
+            disabled={!application.formspreeAction}
+          >
+            {application.submitLabel ?? "Send Application"}
+          </button>
+        </form>
+      </div>
+
+      <aside class="bg-slate-50 p-5 sm:p-6">
+        {application.sidebarTitle && (
+          <h3 class="font-display text-xl font-bold uppercase text-pine-900">{application.sidebarTitle}</h3>
+        )}
+
+        <div class="mt-4 space-y-5">
+          {application.sidebarSections.map((section) => (
+            <section class="rounded-lg border border-slate-200 bg-white p-4">
+              {section.title && (
+                <h4 class="text-sm font-semibold uppercase tracking-wide text-clubred-700">{section.title}</h4>
+              )}
+              {section.paragraphs?.map((paragraph) => (
+                <p class:list={["text-sm leading-relaxed text-slate-700", section.title && "mt-2"]}>{paragraph}</p>
+              ))}
+              {section.rows && (
+                <dl class:list={["space-y-2", (section.title || section.paragraphs?.length) && "mt-3"]}>
+                  {section.rows.map((row) => (
+                    <div class="flex items-start justify-between gap-4 border-t border-slate-100 pt-2 first:border-none first:pt-0">
+                      <dt class="text-sm text-slate-800">{row.label}</dt>
+                      <dd class="text-right text-sm font-semibold text-clubred-700">{row.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+            </section>
+          ))}
+        </div>
+      </aside>
+    </div>
+  </div>
+</dialog>
+
+<script>
+  document.querySelectorAll("[data-league-apply-open]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const slug = button.getAttribute("data-league-apply-open");
+      const dialog = document.getElementById(`league-application-${slug}`);
+      dialog?.showModal();
+    });
+  });
+
+  document.querySelectorAll("[data-league-apply-close]").forEach((button) => {
+    button.addEventListener("click", () => {
+      button.closest("dialog")?.close();
+    });
+  });
+
+  document.querySelectorAll(".league-application-dialog").forEach((dialog) => {
+    dialog.addEventListener("click", (event) => {
+      if (event.target === dialog) {
+        dialog.close();
+      }
+    });
+  });
+</script>
