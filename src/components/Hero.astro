@@ -3,9 +3,9 @@ const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 ---
 
-<section id="about" class="relative isolate flex min-h-screen items-center overflow-hidden bg-pine-900 text-white">
+<section id="about" class="relative isolate min-h-screen overflow-hidden bg-pine-900 text-white">
   <img
-    src="/images/island-green.jpg"
+    src="/images/DJI_0265.JPG"
     alt="Aerial view of Edmonton Springs Golf Course"
     class="absolute inset-0 h-full w-full object-cover brightness-110 saturate-125"
     loading="eager"
@@ -14,15 +14,17 @@ const bookingUrl =
   />
   <div class="absolute inset-0 bg-gradient-to-b from-pine-900/5 via-pine-900/20 to-pine-900/45"></div>
 
-  <div class="hero-content relative mx-auto w-full max-w-6xl px-4 py-16 text-center sm:px-6 sm:py-20 lg:py-24">
-    <h1 class="mx-auto max-w-4xl font-serif text-4xl font-semibold leading-tight tracking-wide sm:text-5xl lg:text-6xl" style="text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);">
+  <div class="hero-content relative mx-auto flex min-h-screen w-full max-w-6xl flex-col items-center justify-center px-4 py-16 text-center sm:px-6 sm:py-20">
+    <h1 class="mx-auto max-w-4xl -translate-y-3 font-serif text-4xl font-semibold leading-tight tracking-wide sm:-translate-y-4 sm:text-5xl lg:text-6xl" style="text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.5);">
       Welcome to Edmonton Springs Golf Resort
     </h1>
-    <p class="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-100 sm:text-lg" style="text-shadow: 0 1px 8px rgba(0,0,0,0.6);">
-      Great conditions, fair pricing, and a welcoming golf experience just west of Edmonton.
-    </p>
 
-    <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
+    <div class="mt-6 translate-y-3 sm:mt-8 sm:translate-y-4">
+      <p class="mx-auto max-w-2xl text-base leading-relaxed text-slate-100 sm:text-lg" style="text-shadow: 0 1px 8px rgba(0,0,0,0.6);">
+        Great conditions, fair pricing, and a welcoming golf experience just west of Edmonton.
+      </p>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center">
       <a
         href={bookingUrl}
         target="_blank"
