@@ -1,5 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const instructionBookingUrl =
+  "https://app.swingmatchgolf.com/my/instructors/jack-rea-hf4d?utm_source=qr_code";
 ---
 
 <Layout
@@ -51,14 +54,22 @@ import Layout from "../layouts/Layout.astro";
           Book a private lesson with our Head Professional for one-on-one coaching tailored to your game. Whether you want to fix a specific issue or build from the ground up, lessons are available for all skill levels.
         </p>
         <p class="mt-3 text-sm leading-relaxed text-slate-700">
-          Lesson pricing, availability, and booking details will be listed here. Reach out directly to schedule a session.
+          Book online through SwingMatch for lesson pricing, availability, and scheduling with our Head Professional.
         </p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a
-            href="/contact"
+            href={instructionBookingUrl}
+            target="_blank"
+            rel="noreferrer noopener"
             class="rounded-md bg-clubred-500 px-5 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-clubred-700"
           >
             Book a Lesson
+          </a>
+          <a
+            href="/contact"
+            class="rounded-md border border-pine-700 px-5 py-3 text-sm font-bold uppercase tracking-wide text-pine-800 hover:bg-pine-50"
+          >
+            Contact Pro Shop
           </a>
         </div>
       </div>

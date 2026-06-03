@@ -1,16 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-const photos = [
-  {
-    src: "https://static.wixstatic.com/media/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg/v1/fill/w_566,h_398,al_c,q_80,usm_0.66_1.00_0.01/4e1033_1487b68f3c4142999d43a7a1da098c00~mv2.jpg",
-    alt: "Aerial view of Edmonton Springs Golf Course"
-  },
-  {
-    src: "https://static.wixstatic.com/media/4e1033_389d596e6e314cfab11c6100152d4a11~mv2.jpg/v1/fill/w_1200,h_654,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Green%2018%20toward%2010.jpg",
-    alt: "Green 18 toward 10 at Edmonton Springs"
-  },
-];
+import { galleryPhotos } from "../data/gallery";
 ---
 
 <Layout
@@ -26,7 +16,7 @@ const photos = [
       </p>
 
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {photos.map((photo) => (
+        {galleryPhotos.map((photo) => (
           <div class="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-soft">
             <img
               src={photo.src}
