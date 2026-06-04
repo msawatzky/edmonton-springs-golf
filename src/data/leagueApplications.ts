@@ -52,12 +52,14 @@ export const mensLeagueApplication: LeagueApplicationConfig = {
   sidebarSections: [
     {
       title: "Club Membership Fee",
-      rows: [{ label: "Membership Fee", value: "$75" }]
+      rows: [{ label: "Membership Fee", value: "$75" }],
+      paragraphs: ["Pay by e-transfer to esgmensleague@gmail.com."]
     },
     {
       title: "Season Green Fees (Huge Savings!)",
       paragraphs: [
-        "Lock in your golf for up to 26 weeks at a massive discount compared to regular course rates ($1,430 regular fee)."
+        "Lock in your golf for up to 26 weeks at a massive discount compared to regular course rates ($1,430 regular fee).",
+        "Green fees must be paid at the Pro Shop."
       ],
       rows: [
         { label: "18 Holes with Cart", value: "$875" },

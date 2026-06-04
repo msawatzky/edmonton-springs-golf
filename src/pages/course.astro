@@ -2,30 +2,30 @@
 import Layout from "../layouts/Layout.astro";
 
 const holes = [
-  { hole: 1, blue: 558, white: 523, red: 486, menHcp: 4, ladiesHcp: 4, menPar: 5, ladiesPar: 5 },
-  { hole: 2, blue: 407, white: 387, red: 357, menHcp: 7, ladiesHcp: 7, menPar: 4, ladiesPar: 4 },
-  { hole: 3, blue: 516, white: 490, red: 455, menHcp: 2, ladiesHcp: 2, menPar: 5, ladiesPar: 5 },
-  { hole: 4, blue: 380, white: 368, red: 309, menHcp: 8, ladiesHcp: 8, menPar: 4, ladiesPar: 4 },
-  { hole: 5, blue: 330, white: 314, red: 273, menHcp: 12, ladiesHcp: 12, menPar: 4, ladiesPar: 4 },
-  { hole: 6, blue: 180, white: 170, red: 130, menHcp: 16, ladiesHcp: 16, menPar: 3, ladiesPar: 3 },
-  { hole: 7, blue: 433, white: 401, red: 361, menHcp: 10, ladiesHcp: 10, menPar: 4, ladiesPar: 4 },
-  { hole: 8, blue: 180, white: 165, red: 139, menHcp: 15, ladiesHcp: 15, menPar: 3, ladiesPar: 3 },
-  { hole: 9, blue: 568, white: 550, red: 472, menHcp: 3, ladiesHcp: 3, menPar: 5, ladiesPar: 5 },
-  { hole: 10, blue: 502, white: 438, red: 335, menHcp: 13, ladiesHcp: 13, menPar: 5, ladiesPar: 5 },
-  { hole: 11, blue: 201, white: 178, red: 122, menHcp: 17, ladiesHcp: 17, menPar: 3, ladiesPar: 3 },
-  { hole: 12, blue: 401, white: 364, red: 336, menHcp: 9, ladiesHcp: 9, menPar: 4, ladiesPar: 4 },
-  { hole: 13, blue: 196, white: 158, red: 116, menHcp: 18, ladiesHcp: 18, menPar: 3, ladiesPar: 3 },
-  { hole: 14, blue: 346, white: 316, red: 291, menHcp: 11, ladiesHcp: 11, menPar: 4, ladiesPar: 4 },
-  { hole: 15, blue: 567, white: 511, red: 465, menHcp: 5, ladiesHcp: 5, menPar: 5, ladiesPar: 5 },
-  { hole: 16, blue: 540, white: 457, red: 421, menHcp: 1, ladiesHcp: 1, menPar: 4, ladiesPar: 4 },
-  { hole: 17, blue: 198, white: 180, red: 150, menHcp: 14, ladiesHcp: 14, menPar: 3, ladiesPar: 3 },
-  { hole: 18, blue: 505, white: 465, red: 410, menHcp: 6, ladiesHcp: 6, menPar: 5, ladiesPar: 5 }
+  { hole: 1, blue: 526, white: 479, red: 418, menHcp: 11, ladiesHcp: 3, menPar: 5, ladiesPar: 5 },
+  { hole: 2, blue: 395, white: 364, red: 278, menHcp: 3, ladiesHcp: 7, menPar: 4, ladiesPar: 4 },
+  { hole: 3, blue: 469, white: 427, red: 318, menHcp: 17, ladiesHcp: 17, menPar: 5, ladiesPar: 5 },
+  { hole: 4, blue: 372, white: 315, red: 238, menHcp: 5, ladiesHcp: 15, menPar: 4, ladiesPar: 4 },
+  { hole: 5, blue: 330, white: 325, red: 267, menHcp: 15, ladiesHcp: 13, menPar: 4, ladiesPar: 4 },
+  { hole: 6, blue: 182, white: 160, red: 132, menHcp: 9, ladiesHcp: 5, menPar: 3, ladiesPar: 3 },
+  { hole: 7, blue: 406, white: 363, red: 312, menHcp: 1, ladiesHcp: 1, menPar: 4, ladiesPar: 4 },
+  { hole: 8, blue: 170, white: 148, red: 130, menHcp: 13, ladiesHcp: 11, menPar: 3, ladiesPar: 3 },
+  { hole: 9, blue: 396, white: 331, red: 256, menHcp: 7, ladiesHcp: 9, menPar: 4, ladiesPar: 4 },
+  { hole: 10, blue: 483, white: 434, red: 354, menHcp: 18, ladiesHcp: 18, menPar: 5, ladiesPar: 5 },
+  { hole: 11, blue: 178, white: 143, red: 118, menHcp: 8, ladiesHcp: 14, menPar: 3, ladiesPar: 3 },
+  { hole: 12, blue: 389, white: 335, red: 268, menHcp: 6, ladiesHcp: 6, menPar: 4, ladiesPar: 4 },
+  { hole: 13, blue: 171, white: 150, red: 112, menHcp: 12, ladiesHcp: 16, menPar: 3, ladiesPar: 3 },
+  { hole: 14, blue: 323, white: 313, red: 291, menHcp: 16, ladiesHcp: 10, menPar: 4, ladiesPar: 4 },
+  { hole: 15, blue: 532, white: 512, red: 464, menHcp: 2, ladiesHcp: 2, menPar: 5, ladiesPar: 5 },
+  { hole: 16, blue: 409, white: 368, red: 282, menHcp: 4, ladiesHcp: 4, menPar: 4, ladiesPar: 4 },
+  { hole: 17, blue: 174, white: 156, red: 140, menHcp: 10, ladiesHcp: 12, menPar: 3, ladiesPar: 3 },
+  { hole: 18, blue: 474, white: 464, red: 406, menHcp: 14, ladiesHcp: 8, menPar: 5, ladiesPar: 5 }
 ];
 
 const totals = {
-  out: { blue: 3552, white: 3368, red: 2982, par: 37 },
-  in: { blue: 3456, white: 3067, red: 2646, par: 36 },
-  total: { blue: 7008, white: 6435, red: 5628, par: 73 }
+  out: { blue: 3246, white: 2912, red: 2349, par: 36 },
+  in: { blue: 3133, white: 2875, red: 2435, par: 36 },
+  total: { blue: 6379, white: 5787, red: 4784, par: 72 }
 };
 
 const frontNine = holes.slice(0, 9);

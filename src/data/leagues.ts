@@ -80,20 +80,20 @@ export const menLeague: LeaguePageData = {
     "If you are new to the league or did not play last year, complete the Men's League application form.",
     "Send your preferred day and tee-time window; include all names if registering as a foursome.",
     "If registering as a single or twosome, submit your preferred day and time and the organizers will place you.",
-    "Pay your green fee at the Pro Shop by May 15, 2026.",
-    "Pay the $75 league membership fee by e-transfer, cash, or card/debit at the Pro Shop."
+    "Pay the $75 league membership fee by e-transfer to the league organizer at esgmensleague@gmail.com.",
+    "Pay season green fees at the Pro Shop by May 15, 2026."
   ],
   feeSections: [
     {
       title: "League Membership Fee",
       note:
-        "Mandatory fee that covers prizes, year-end party costs, and official handicap scoring system setup.",
+        "Mandatory fee that covers prizes, year-end party costs, and official handicap scoring system setup. Pay by e-transfer to esgmensleague@gmail.com (not at the Pro Shop).",
       rows: [{ label: "Membership Fee", value: "$75" }]
     },
     {
       title: "Season Green Fee Packages",
       note:
-        "Packages cover up to 26 weeks and are discounted from the regular $1,430 season equivalent. Nine-hole rates are intended for tee times after 5:30 PM.",
+        "Packages cover up to 26 weeks and are discounted from the regular $1,430 season equivalent. Nine-hole rates are intended for tee times after 5:30 PM. Green fees must be paid at the Pro Shop.",
       rows: [
         { label: "18 Holes with Cart", value: "$875" },
         { label: "18 Holes Walker", value: "$628" },
@@ -129,8 +129,9 @@ export const menLeague: LeaguePageData = {
     {
       title: "Payments",
       items: [
-        "Green fees are paid to the Pro Shop (not to league organizers).",
-        "Single payment is planned for green fees; if needed, payment arrangements must be made directly with the Pro Shop."
+        "League membership fee ($75) is paid by e-transfer to esgmensleague@gmail.com.",
+        "Season green fees must be paid at the Pro Shop by May 15, 2026.",
+        "If needed, green fee payment arrangements must be made directly with the Pro Shop."
       ]
     },
     {

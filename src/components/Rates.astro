@@ -8,16 +8,18 @@ const rangeRates = [
 const eighteenHoleRates = [
   { tier: "Adult", weekday: "$47.00", weekend: "$63.50", twilight: "$35.50" },
   { tier: "Senior", weekday: "$40.00", weekend: "$54.00", twilight: "$30.50" },
-  { tier: "Student", weekday: "$24.00", weekend: "$32.00", twilight: "$20.00" },
-  { tier: "12 & Under", weekday: "$14.00", weekend: "$17.00", twilight: "$10.00" }
+  { tier: "Student", weekday: "$24.00", weekend: "$32.00", twilight: "$20.00", footnote: "**" },
+  { tier: "12 & Under", weekday: "$14.00", weekend: "$17.00", twilight: "$10.00", footnote: "*" }
 ];
 
 const nineHoleRates = [
   { tier: "Adult", weekday: "$28.50", weekend: "$38.00", twilight: "$24.00" },
   { tier: "Senior", weekday: "$24.00", weekend: "$32.50", twilight: "$21.00" },
-  { tier: "Student", weekday: "$15.00", weekend: "$20.00", twilight: "$15.00" },
-  { tier: "12 & Under", weekday: "$8.00", weekend: "$9.00", twilight: "$7.00" }
+  { tier: "Student", weekday: "$15.00", weekend: "$20.00", twilight: "$15.00", footnote: "**" },
+  { tier: "12 & Under", weekday: "$8.00", weekend: "$9.00", twilight: "$7.00", footnote: "*" }
 ];
+
+const formatTierLabel = (tier: string, footnote?: string) => (footnote ? `${tier}${footnote}` : tier);
 ---
 
 <section id="rates" class="bg-white py-16 sm:py-20">
@@ -46,7 +48,7 @@ const nineHoleRates = [
             <tbody>
               {eighteenHoleRates.map((rate) => (
                 <tr class="border-t border-slate-200">
-                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{rate.tier}</th>
+                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{formatTierLabel(rate.tier, rate.footnote)}</th>
                   <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekday}</td>
                   <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekend}</td>
                   <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">{rate.twilight}</td>
@@ -69,7 +71,7 @@ const nineHoleRates = [
             <tbody>
               {nineHoleRates.map((rate) => (
                 <tr class="border-t border-slate-200">
-                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{rate.tier}</th>
+                  <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">{formatTierLabel(rate.tier, rate.footnote)}</th>
                   <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekday}</td>
                   <td class="whitespace-nowrap px-4 py-3 text-slate-700">{rate.weekend}</td>
                   <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">{rate.twilight}</td>
@@ -83,18 +85,26 @@ const nineHoleRates = [
           <table class="min-w-full text-left text-sm">
             <thead class="bg-pine-900 text-xs uppercase tracking-wide text-white">
               <tr>
-                <th scope="col" class="px-4 py-3 font-semibold">Cart Rental (Per Seat)</th>
+                <th scope="col" class="px-4 py-3 font-semibold">Rentals</th>
                 <th scope="col" class="px-4 py-3 font-semibold">Price</th>
               </tr>
             </thead>
             <tbody>
               <tr class="border-t border-slate-200">
-                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">18 Holes</th>
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">Cart — 18 Holes (Per Seat)</th>
                 <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$20.00</td>
               </tr>
               <tr class="border-t border-slate-200">
-                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">9 Holes</th>
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">Cart — 9 Holes (Per Seat)</th>
                 <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$11.50</td>
+              </tr>
+              <tr class="border-t border-slate-200">
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">Callaway Club Rental — 18 Holes</th>
+                <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$30.00</td>
+              </tr>
+              <tr class="border-t border-slate-200">
+                <th scope="row" class="whitespace-nowrap px-4 py-3 font-semibold text-pine-900">Callaway Club Rental — 9 Holes</th>
+                <td class="whitespace-nowrap px-4 py-3 font-bold text-clubred-700">$18.00</td>
               </tr>
             </tbody>
           </table>
@@ -102,6 +112,12 @@ const nineHoleRates = [
 
         <p class="mt-4 text-sm text-slate-700">
           Players not willing to share a cart will pay $35 for 18 holes and $20 for 9 holes.
+        </p>
+        <p class="mt-3 text-sm text-slate-700">
+          <span class="font-semibold text-slate-900">*</span> 12 &amp; Under — Must be accompanied by an adult.
+        </p>
+        <p class="mt-2 text-sm text-slate-700">
+          <span class="font-semibold text-slate-900">**</span> Student — Weekend rates apply after 1:00 PM.
         </p>
       </div>
     </div>
