@@ -38,6 +38,8 @@ export const FORMSPREE_LADIES_LEAGUE = import.meta.env.PUBLIC_FORMSPREE_LADIES_L
 /** FormSubmit recipients — used when PUBLIC_LEAGUE_FORM_BACKEND=formsubmit */
 export const FORMSUBMIT_MENS_LEAGUE = import.meta.env.PUBLIC_FORMSUBMIT_MENS_LEAGUE ?? "";
 export const FORMSUBMIT_LADIES_LEAGUE = import.meta.env.PUBLIC_FORMSUBMIT_LADIES_LEAGUE ?? "";
+/** Optional CC on all league FormSubmit submissions */
+export const FORMSUBMIT_WEBMASTER_CC = import.meta.env.PUBLIC_FORMSUBMIT_WEBMASTER_CC ?? "";
 
 function resolveLeagueFormAction(formspreeAction: string, formsubmitEmail: string): string {
   if (LEAGUE_FORM_BACKEND === "formsubmit") {

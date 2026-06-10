@@ -1,5 +1,5 @@
 ---
-import { LEAGUE_FORM_BACKEND, type LeagueApplicationConfig } from "../data/leagueApplications";
+import { FORMSUBMIT_WEBMASTER_CC, LEAGUE_FORM_BACKEND, type LeagueApplicationConfig } from "../data/leagueApplications";
 
 interface Props {
   slug: string;
@@ -52,6 +52,9 @@ const labelClass = "block text-sm font-semibold text-slate-900";
         >
           <input type="hidden" name="_subject" value={application.modalTitle} />
           {useFormSubmit && <input type="hidden" name="_next" value={returnUrl} />}
+          {useFormSubmit && FORMSUBMIT_WEBMASTER_CC && (
+            <input type="hidden" name="_cc" value={FORMSUBMIT_WEBMASTER_CC} />
+          )}
 
           {application.fields.map((field) => (
             <div>
