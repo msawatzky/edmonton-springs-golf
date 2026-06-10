@@ -11,6 +11,8 @@ export interface LeagueCard {
   href: string;
   description: string;
   image: string;
+  /** Tailwind object-position class when object-cover crops the image awkwardly */
+  imagePosition?: string;
 }
 
 export interface LeagueDetailRow {
@@ -65,7 +67,8 @@ export const leagueCards: LeagueCard[] = [
     label: "Ladies League",
     href: "/leagues/ladies",
     description: "Schedules and announcements for ladies league nights and activities.",
-    image: "https://images.pexels.com/photos/35320701/pexels-photo-35320701.jpeg"
+    image: "https://images.pexels.com/photos/35320701/pexels-photo-35320701.jpeg",
+    imagePosition: "object-[center_80%]"
   }
 ];
 

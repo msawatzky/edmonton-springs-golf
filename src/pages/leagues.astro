@@ -24,7 +24,10 @@ import { leagueCards } from "../data/leagues";
             <img
               src={item.image}
               alt={item.label}
-              class="h-44 w-full object-cover transition duration-200 group-hover:scale-[1.02]"
+              class:list={[
+                "h-44 w-full object-cover transition duration-200 group-hover:scale-[1.02]",
+                item.imagePosition ?? "object-center"
+              ]}
               loading="lazy"
               decoding="async"
             />
