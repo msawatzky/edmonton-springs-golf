@@ -13,9 +13,13 @@ export interface LeagueApplicationSidebarSection {
   rows?: Array<{ label: string; value: string }>;
 }
 
+export type LeagueFormBackend = "formsubmit" | "formspree";
+
 export interface LeagueApplicationConfig {
   /** Formspree endpoint, e.g. https://formspree.io/f/your-form-id */
   formspreeAction: string;
+  /** Resolved POST target based on PUBLIC_LEAGUE_FORM_BACKEND */
+  formAction: string;
   modalTitle: string;
   buttonLabel: string;
   submitLabel?: string;
@@ -24,12 +28,27 @@ export interface LeagueApplicationConfig {
   sidebarSections: LeagueApplicationSidebarSection[];
 }
 
-/** Replace with your Formspree form URLs when ready. */
+/** Set to "formspree" to re-enable Formspree; defaults to FormSubmit while testing. */
+export const LEAGUE_FORM_BACKEND = (import.meta.env.PUBLIC_LEAGUE_FORM_BACKEND ?? "formsubmit") as LeagueFormBackend;
+
+/** Formspree form URLs — kept for when PUBLIC_LEAGUE_FORM_BACKEND=formspree */
 export const FORMSPREE_MENS_LEAGUE = import.meta.env.PUBLIC_FORMSPREE_MENS_LEAGUE ?? "";
 export const FORMSPREE_LADIES_LEAGUE = import.meta.env.PUBLIC_FORMSPREE_LADIES_LEAGUE ?? "";
 
+/** FormSubmit recipients — used when PUBLIC_LEAGUE_FORM_BACKEND=formsubmit */
+export const FORMSUBMIT_MENS_LEAGUE = import.meta.env.PUBLIC_FORMSUBMIT_MENS_LEAGUE ?? "";
+export const FORMSUBMIT_LADIES_LEAGUE = import.meta.env.PUBLIC_FORMSUBMIT_LADIES_LEAGUE ?? "";
+
+function resolveLeagueFormAction(formspreeAction: string, formsubmitEmail: string): string {
+  if (LEAGUE_FORM_BACKEND === "formsubmit") {
+    return formsubmitEmail ? `https://formsubmit.co/${formsubmitEmail}` : "";
+  }
+  return formspreeAction;
+}
+
 export const mensLeagueApplication: LeagueApplicationConfig = {
   formspreeAction: FORMSPREE_MENS_LEAGUE,
+  formAction: resolveLeagueFormAction(FORMSPREE_MENS_LEAGUE, FORMSUBMIT_MENS_LEAGUE),
   modalTitle: "Men's League Application",
   buttonLabel: "Apply for Men's League",
   submitLabel: "Send Application",
@@ -87,6 +106,7 @@ export const mensLeagueApplication: LeagueApplicationConfig = {
 
 export const ladiesLeagueApplication: LeagueApplicationConfig = {
   formspreeAction: FORMSPREE_LADIES_LEAGUE,
+  formAction: resolveLeagueFormAction(FORMSPREE_LADIES_LEAGUE, FORMSUBMIT_LADIES_LEAGUE),
   modalTitle: "Ladies League Application",
   buttonLabel: "Apply for Ladies League",
   submitLabel: "Send Application",
