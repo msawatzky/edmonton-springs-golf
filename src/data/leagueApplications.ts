@@ -51,15 +51,18 @@ export const mensLeagueApplication: LeagueApplicationConfig = {
   sidebarTitle: "Fees & Contact",
   sidebarSections: [
     {
-      title: "Club Membership Fee",
-      rows: [{ label: "Membership Fee", value: "$75" }],
-      paragraphs: ["Pay by e-transfer to esgmensleague@gmail.com."]
+      title: "League Registration Fee",
+      rows: [{ label: "Registration Fee", value: "$75" }],
+      paragraphs: [
+        "Registration fees are payable to the Men's League.",
+        "Pay by e-transfer to esgmensleague@gmail.com."
+      ]
     },
     {
-      title: "Season Green Fees (Huge Savings!)",
+      title: "League Membership Fee",
       paragraphs: [
-        "Lock in your golf for up to 26 weeks at a massive discount compared to regular course rates ($1,430 regular fee).",
-        "Green fees must be paid at the Pro Shop."
+        "Membership fees are payable to the Pro Shop.",
+        "Lock in your golf for up to 26 rounds at a massive discount compared to regular course rates ($1,430 regular fee)."
       ],
       rows: [
         { label: "18 Holes with Cart", value: "$875" },
@@ -105,8 +108,17 @@ export const ladiesLeagueApplication: LeagueApplicationConfig = {
   sidebarTitle: "Fees & Contact",
   sidebarSections: [
     {
-      title: "League Fees",
-      rows: [{ label: "Registration Fee", value: "$50" }]
+      title: "League Registration Fee",
+      rows: [{ label: "Registration Fee (Cash Only)", value: "$50" }],
+      paragraphs: ["Registration fees are payable to the Ladies League."]
+    },
+    {
+      title: "League Membership Fee",
+      paragraphs: ["Membership fees are payable to the Pro Shop."],
+      rows: [
+        { label: "With Cart", value: "$400 + GST" },
+        { label: "Walking", value: "$295 + GST" }
+      ]
     },
     {
       title: "Contact",

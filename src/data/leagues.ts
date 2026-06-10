@@ -1,6 +1,11 @@
 import type { LeagueApplicationConfig } from "./leagueApplications";
 import { ladiesLeagueApplication, mensLeagueApplication } from "./leagueApplications";
 
+const leagueRegistrationFeeNote = (league: "Men's League" | "Ladies League") =>
+  `Registration fees are payable to the ${league}.`;
+
+const leagueMembershipFeeNote = "Membership fees are payable to the Pro Shop.";
+
 export interface LeagueCard {
   label: string;
   href: string;
@@ -69,31 +74,29 @@ export const menLeague: LeaguePageData = {
   slug: "mens",
   season: "2026 Season",
   intro:
-    "Edmonton Springs Men's League offers weekly fixed tee times, tournament play, and a full season format built for friendly competition.",
+    "Edmonton Springs Men's League offers fixed tee times on your league day, tournament play, and a full season format built for friendly competition.",
   atAGlance: [
     { label: "League Days", value: "Wednesdays or Thursdays" },
-    { label: "Season Window", value: "Starts April 20 for up to 26 weeks (to October 15)" },
+    { label: "Season Window", value: "Starts April 20 for up to 26 rounds (through October 15)" },
     { label: "Typical Tee Times", value: "Wed 3:30-5:15 PM, Thu 1:30-5:30 PM" },
-    { label: "Green Fee Due Date", value: "May 15, 2026" }
+    { label: "Membership Fee Due Date", value: "May 15, 2026" }
   ],
   registrationSteps: [
     "If you are new to the league or did not play last year, complete the Men's League application form.",
     "Send your preferred day and tee-time window; include all names if registering as a foursome.",
     "If registering as a single or twosome, submit your preferred day and time and the organizers will place you.",
-    "Pay the $75 league membership fee by e-transfer to the league organizer at esgmensleague@gmail.com.",
-    "Pay season green fees at the Pro Shop by May 15, 2026."
+    "Pay the $75 league registration fee by e-transfer to esgmensleague@gmail.com.",
+    "Pay league membership fees at the Pro Shop by May 15, 2026."
   ],
   feeSections: [
     {
-      title: "League Membership Fee",
-      note:
-        "Mandatory fee that covers prizes, year-end party costs, and official handicap scoring system setup. Pay by e-transfer to esgmensleague@gmail.com (not at the Pro Shop).",
-      rows: [{ label: "Membership Fee", value: "$75" }]
+      title: "League Registration Fee",
+      note: `${leagueRegistrationFeeNote("Men's League")} Mandatory fee that covers prizes, year-end party costs, and official handicap scoring system setup. Pay by e-transfer to esgmensleague@gmail.com.`,
+      rows: [{ label: "Registration Fee", value: "$75" }]
     },
     {
-      title: "Season Green Fee Packages",
-      note:
-        "Packages cover up to 26 weeks and are discounted from the regular $1,430 season equivalent. Nine-hole rates are intended for tee times after 5:30 PM. Green fees must be paid at the Pro Shop.",
+      title: "League Membership Fee",
+      note: `${leagueMembershipFeeNote} Packages cover up to 26 rounds and are discounted from the regular $1,430 season equivalent. Nine-hole rates are intended for tee times after 5:30 PM.`,
       rows: [
         { label: "18 Holes with Cart", value: "$875" },
         { label: "18 Holes Walker", value: "$628" },
@@ -129,9 +132,9 @@ export const menLeague: LeaguePageData = {
     {
       title: "Payments",
       items: [
-        "League membership fee ($75) is paid by e-transfer to esgmensleague@gmail.com.",
-        "Season green fees must be paid at the Pro Shop by May 15, 2026.",
-        "If needed, green fee payment arrangements must be made directly with the Pro Shop."
+        "League registration fee ($75) is paid by e-transfer to esgmensleague@gmail.com.",
+        "League membership fees must be paid at the Pro Shop by May 15, 2026.",
+        "If needed, membership fee payment arrangements must be made directly with the Pro Shop."
       ]
     },
     {
@@ -175,19 +178,18 @@ export const ladiesLeague: LeaguePageData = {
     "Complete the Ladies League registration form (every member, new and returning).",
     "Submit preferred teammates and multiple tee-time options when registering.",
     "If you are registering solo, the league will place you on a team.",
-    "Pay the registration fee and golf fee by May 11, 2026.",
+    "Pay the league registration fee and league membership fee by May 11, 2026.",
     "Watch for final teams, confirmed tee times, and housekeeping rules before season launch."
   ],
   feeSections: [
     {
-      title: "Registration Fee",
-      note: "Non-refundable fee used for prizes, banquet costs, and league goodie bags.",
+      title: "League Registration Fee",
+      note: `${leagueRegistrationFeeNote("Ladies League")} Non-refundable fee used for prizes, banquet costs, and league goodie bags.`,
       rows: [{ label: "Registration Fee (Cash Only)", value: "$50" }]
     },
     {
-      title: "Golf Season Fee",
-      note:
-        "Non-refundable fee for 16 league rounds and year-end tournament golf (includes a half cart for weekend tournament play).",
+      title: "League Membership Fee",
+      note: `${leagueMembershipFeeNote} Non-refundable fee for 16 league rounds and year-end tournament play (includes a half cart for weekend tournament play).`,
       rows: [
         { label: "With Cart", value: "$400 + GST" },
         { label: "Walking", value: "$295 + GST" }
@@ -233,8 +235,8 @@ export const ladiesLeague: LeaguePageData = {
     {
       title: "Payment Handling",
       items: [
-        "Registration fee should be submitted to the Pro Shop in a sealed envelope labeled with your name and Ladies League.",
-        "Golf fee is paid to the Pro Shop; cash and credit cards are accepted.",
+        "League registration fees are payable to the Ladies League.",
+        "League membership fees are payable to the Pro Shop; cash and credit cards are accepted.",
         "If you cannot pay by May 11, contact the organizers in advance."
       ]
     }
