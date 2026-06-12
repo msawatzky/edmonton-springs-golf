@@ -1,7 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
-import HomePromoPopup from "../components/HomePromoPopup.astro";
 
 const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
@@ -11,11 +10,6 @@ const bookingUrl =
   title="Edmonton Springs Golf Course | Spruce Grove"
   description="Book Edmonton Springs Golf Course tee times, view rates, and find course details from a fast mobile-friendly homepage."
 >
-  <HomePromoPopup
-    imageSrc="/documents/liquor-promo.png"
-    imageAlt="Edmonton Springs Golf — liquor available from 7 AM, morning green fees with cart include coffee and Baileys from 7 AM to 9 AM"
-  />
-
   <Hero />
 
   <section class="bg-white py-14 sm:py-16">
