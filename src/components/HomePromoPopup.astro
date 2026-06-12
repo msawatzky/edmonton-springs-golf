@@ -1,0 +1,87 @@
+---
+interface Props {
+  imageSrc: string;
+  imageAlt: string;
+  storageKey?: string;
+}
+
+const {
+  imageSrc,
+  imageAlt,
+  storageKey = "esg-liquor-promo-last-shown"
+} = Astro.props;
+---
+
+<dialog
+  id="home-promo-popup"
+  class="home-promo-dialog fixed inset-0 z-50 m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-0 backdrop:bg-black/75 open:flex open:items-center open:justify-center"
+  aria-labelledby="home-promo-popup-title"
+>
+  <div class="relative mx-4 w-full max-w-md">
+    <div class="mb-3 flex items-center justify-between gap-4">
+      <p id="home-promo-popup-title" class="text-sm font-semibold uppercase tracking-wide text-white">
+        What's New
+      </p>
+      <button
+        type="button"
+        data-home-promo-close
+        class="rounded-md border border-white/40 bg-black/40 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-black/60"
+      >
+        Close
+      </button>
+    </div>
+    <img
+      src={imageSrc}
+      alt={imageAlt}
+      class="max-h-[min(85vh,720px)] w-full rounded-lg border border-white/20 object-contain shadow-2xl"
+      loading="eager"
+      decoding="async"
+    />
+  </div>
+</dialog>
+
+<script define:vars={{ storageKey }}>
+  const dialog = document.getElementById("home-promo-popup");
+  if (!dialog) {
+    return;
+  }
+
+  const getTodayKey = () => new Date().toLocaleDateString("en-CA");
+
+  const shouldShowPopup = () => {
+    try {
+      return localStorage.getItem(storageKey) !== getTodayKey();
+    } catch {
+      return true;
+    }
+  };
+
+  const markShown = () => {
+    try {
+      localStorage.setItem(storageKey, getTodayKey());
+    } catch {
+      // Ignore storage failures (private browsing, etc.)
+    }
+  };
+
+  const closePopup = () => {
+    markShown();
+    dialog.close();
+  };
+
+  if (shouldShowPopup()) {
+    dialog.showModal();
+  }
+
+  dialog.querySelectorAll("[data-home-promo-close]").forEach((button) => {
+    button.addEventListener("click", closePopup);
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      closePopup();
+    }
+  });
+
+  dialog.addEventListener("close", markShown);
+</script>
