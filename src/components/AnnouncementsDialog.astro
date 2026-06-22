@@ -1,0 +1,191 @@
+---
+import { announcements } from "../data/announcements";
+---
+
+<dialog
+  id="announcements-dialog"
+  class="announcements-dialog fixed inset-0 z-50 m-0 h-full w-full max-h-none max-w-none border-0 bg-transparent p-0 backdrop:bg-black/75 open:flex open:items-center open:justify-center"
+  aria-labelledby="announcements-dialog-title"
+>
+  <div class="relative mx-4 w-full max-w-md">
+    <div class="mb-3 flex items-center justify-between gap-4">
+      <h2 id="announcements-dialog-title" class="text-sm font-semibold uppercase tracking-wide text-white">
+        Announcements
+      </h2>
+      <button
+        type="button"
+        data-announcements-close
+        class="rounded-md border border-white/40 bg-black/40 px-3 py-2 text-xs font-bold uppercase tracking-wide text-white hover:bg-black/60"
+      >
+        Close
+      </button>
+    </div>
+
+    <div
+      data-announcements-empty
+      class="hidden rounded-lg border border-white/20 bg-white px-6 py-10 text-center shadow-2xl"
+    >
+      <p class="font-display text-xl font-bold uppercase text-pine-900">No Announcements Right Now</p>
+      <p class="mt-3 text-sm leading-relaxed text-slate-700">
+        Check back soon for updates on events, promotions, and course news.
+      </p>
+    </div>
+
+    <div data-announcements-carousel class="hidden">
+      <div class="relative">
+        <button
+          type="button"
+          data-announcements-prev
+          class="absolute left-0 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/30 bg-black/50 p-2 text-2xl leading-none text-white hover:bg-black/70"
+          aria-label="Previous announcement"
+        >
+          ‹
+        </button>
+
+        <img
+          data-announcements-image
+          src=""
+          alt=""
+          class="max-h-[min(80vh,720px)] w-full rounded-lg border border-white/20 object-contain shadow-2xl"
+          loading="eager"
+          decoding="async"
+        />
+
+        <button
+          type="button"
+          data-announcements-next
+          class="absolute right-0 top-1/2 z-10 -translate-y-1/2 translate-x-1/2 rounded-full border border-white/30 bg-black/50 p-2 text-2xl leading-none text-white hover:bg-black/70"
+          aria-label="Next announcement"
+        >
+          ›
+        </button>
+      </div>
+
+      <p data-announcements-counter class="mt-3 text-center text-xs font-semibold uppercase tracking-wide text-white/90"></p>
+    </div>
+  </div>
+</dialog>
+
+<script define:vars={{ announcements }}>
+  const STORAGE_KEY = "esg-announcements-auto-shown";
+
+  const dialog = document.getElementById("announcements-dialog");
+  if (!dialog) {
+    return;
+  }
+
+  const emptyState = dialog.querySelector("[data-announcements-empty]");
+  const carousel = dialog.querySelector("[data-announcements-carousel]");
+  const image = dialog.querySelector("[data-announcements-image]");
+  const counter = dialog.querySelector("[data-announcements-counter]");
+  const prevButton = dialog.querySelector("[data-announcements-prev]");
+  const nextButton = dialog.querySelector("[data-announcements-next]");
+
+  let currentIndex = 0;
+  let wasAutoOpened = false;
+
+  const getTodayKey = () => new Date().toLocaleDateString("en-CA");
+
+  const getActiveAnnouncements = () => {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return announcements
+      .filter((item) => {
+        const expiry = new Date(`${item.expiresOn}T00:00:00`);
+        return today < expiry;
+      })
+      .sort((a, b) => a.order - b.order);
+  };
+
+  const markAutoShown = () => {
+    try {
+      localStorage.setItem(STORAGE_KEY, getTodayKey());
+    } catch {
+      // Ignore storage failures.
+    }
+  };
+
+  const shouldAutoOpen = () => {
+    try {
+      return localStorage.getItem(STORAGE_KEY) !== getTodayKey();
+    } catch {
+      return true;
+    }
+  };
+
+  const renderSlide = () => {
+    const active = getActiveAnnouncements();
+    const hasAnnouncements = active.length > 0;
+
+    emptyState?.classList.toggle("hidden", hasAnnouncements);
+    carousel?.classList.toggle("hidden", !hasAnnouncements);
+
+    if (!hasAnnouncements || !image) {
+      return;
+    }
+
+    if (currentIndex >= active.length) {
+      currentIndex = 0;
+    }
+
+    const current = active[currentIndex];
+    image.src = current.imageSrc;
+    image.alt = current.imageAlt;
+
+    if (counter) {
+      counter.textContent = `${currentIndex + 1} of ${active.length}`;
+    }
+
+    const showNav = active.length > 1;
+    prevButton?.classList.toggle("hidden", !showNav);
+    nextButton?.classList.toggle("hidden", !showNav);
+    counter?.classList.toggle("hidden", !showNav);
+  };
+
+  const openDialog = (auto = false) => {
+    currentIndex = 0;
+    wasAutoOpened = auto;
+    renderSlide();
+    dialog.showModal();
+  };
+
+  const closeDialog = () => {
+    if (wasAutoOpened) {
+      markAutoShown();
+    }
+    dialog.close();
+  };
+
+  const goTo = (delta) => {
+    const active = getActiveAnnouncements();
+    if (active.length <= 1) {
+      return;
+    }
+
+    currentIndex = (currentIndex + delta + active.length) % active.length;
+    renderSlide();
+  };
+
+  dialog.querySelectorAll("[data-announcements-close]").forEach((button) => {
+    button.addEventListener("click", closeDialog);
+  });
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      closeDialog();
+    }
+  });
+
+  prevButton?.addEventListener("click", () => goTo(-1));
+  nextButton?.addEventListener("click", () => goTo(1));
+
+  document.querySelectorAll("[data-announcements-open]").forEach((button) => {
+    button.addEventListener("click", () => openDialog(false));
+  });
+
+  const active = getActiveAnnouncements();
+  if (active.length > 0 && shouldAutoOpen()) {
+    openDialog(true);
+  }
+</script>

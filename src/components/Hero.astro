@@ -1,4 +1,6 @@
 ---
+import AnnouncementsDialog from "./AnnouncementsDialog.astro";
+
 const bookingUrl =
   "https://edmontonsprings.cps.golf/onlineresweb/search-teetime?TeeOffTimeMin=0&TeeOffTimeMax=23";
 ---
@@ -33,17 +35,19 @@ const bookingUrl =
       >
         Book a Tee Time
       </a>
-      <a
-        href="https://www.edmontonspringsgolf.com/email-me"
-        target="_blank"
-        rel="noreferrer"
+      <button
+        type="button"
+        data-announcements-open
         class="inline-flex items-center justify-center rounded-md border border-white/60 bg-black/20 px-6 py-3 text-sm font-bold uppercase tracking-wide text-white hover:bg-white/10"
       >
-        Join Email List
-      </a>
+        Announcements
+      </button>
+    </div>
     </div>
   </div>
 </section>
+
+<AnnouncementsDialog />
 
 <style>
   .hero-content {
