@@ -1,0 +1,514 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { courseHoles } from "../../data/courseHoles";
+
+const initialHole = 1;
+const initialHoleData = courseHoles[0];
+---
+
+<Layout
+  title="Course Tour | Edmonton Springs Golf Course"
+  description="Flyover tour of all 18 holes at Edmonton Springs Golf Course in Spruce Grove, Alberta."
+>
+  <section class="bg-cream py-12 sm:py-16">
+    <div class="mx-auto max-w-6xl px-4 sm:px-6">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Course</p>
+      <h1 class="mt-2 font-display text-3xl font-bold uppercase text-pine-900 sm:text-4xl">Course Tour</h1>
+      <p class="mt-4 max-w-3xl text-sm leading-relaxed text-slate-700 sm:text-base">
+        Explore every hole with aerial flyover video and yardage details. Select a hole below to watch its flyover.
+      </p>
+
+      <div class="mt-8 rounded-xl border border-slate-200 bg-white p-4 shadow-soft sm:p-5">
+        <div class="relative">
+          <button
+            type="button"
+            data-hole-scroll="prev"
+            class="absolute left-0 top-0 z-10 flex h-full w-8 items-center justify-center bg-gradient-to-r from-white via-white/95 to-transparent text-pine-900 transition hover:text-clubred-500 sm:w-10"
+            aria-label="Scroll holes left"
+          >
+            <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 0 1-.02 1.06L8.832 10l3.938 3.71a.75.75 0 1 1-1.04 1.08l-4.5-4.25a.75.75 0 0 1 0-1.08l4.5-4.25a.75.75 0 0 1 1.06.02Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+
+          <div
+            id="hole-slider"
+            class="flex gap-2 overflow-x-auto scroll-smooth px-8 sm:gap-3 sm:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            role="tablist"
+            aria-label="Select hole"
+          >
+            {courseHoles.map((hole) => (
+              <button
+                type="button"
+                role="tab"
+                data-hole={hole.hole}
+                aria-selected={hole.hole === initialHole}
+                aria-label={`Hole ${hole.hole}, par ${hole.menPar}`}
+                class:list={[
+                  "group hole-thumb relative aspect-video w-[120px] shrink-0 overflow-hidden rounded-lg border-2 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-pine-700 sm:w-[144px] lg:w-[200px]",
+                  hole.hole === initialHole
+                    ? "border-clubred-500 ring-2 ring-clubred-500/30"
+                    : "border-slate-200 hover:border-pine-700/40",
+                ]}
+              >
+                {hole.flyoverVideo ? (
+                  <img
+                    src={`/images/flyovers/thumbs/h${hole.hole}.jpg`}
+                    alt=""
+                    width="400"
+                    height="225"
+                    loading="lazy"
+                    decoding="async"
+                    class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="absolute inset-0 bg-gradient-to-br from-pine-700 to-pine-900" aria-hidden="true" />
+                )}
+                <div class="absolute inset-0 flex flex-col justify-end p-2.5 lg:p-3">
+                  <div class="flex items-end justify-between gap-1">
+                    <span class="text-[10px] font-bold uppercase tracking-wide text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] sm:text-xs lg:text-sm">
+                      Hole {hole.hole}
+                    </span>
+                    <span class="text-[10px] font-bold uppercase tracking-wide text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.8)] sm:text-xs lg:text-sm">
+                      Par {hole.menPar}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <button
+            type="button"
+            data-hole-scroll="next"
+            class="absolute right-0 top-0 z-10 flex h-full w-8 items-center justify-center bg-gradient-to-l from-white via-white/95 to-transparent text-pine-900 transition hover:text-clubred-500 sm:w-10"
+            aria-label="Scroll holes right"
+          >
+            <svg aria-hidden="true" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="tour-main" class="mt-6 flex scroll-mt-24 flex-col gap-6 lg:grid lg:grid-cols-[280px_1fr] lg:items-start xl:grid-cols-[320px_1fr]">
+        <aside id="hole-stats" class="order-2 flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6 lg:order-none">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Hole Details</p>
+          <h2 id="hole-title" class="mt-1 font-display text-2xl font-bold uppercase text-pine-900 sm:text-3xl">
+            Hole {initialHoleData.hole}
+          </h2>
+
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+              <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Men's Par</p>
+              <p id="stat-men-par" class="mt-1 font-display text-2xl font-bold text-pine-900">{initialHoleData.menPar}</p>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+              <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Ladies' Par</p>
+              <p id="stat-ladies-par" class="mt-1 font-display text-2xl font-bold text-pine-900">{initialHoleData.ladiesPar}</p>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+              <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Men's Hcp</p>
+              <p id="stat-men-hcp" class="mt-1 font-display text-2xl font-bold text-pine-900">{initialHoleData.menHcp}</p>
+            </div>
+            <div class="rounded-lg border border-slate-200 bg-slate-50 px-3 py-3">
+              <p class="text-[10px] font-semibold uppercase tracking-wide text-slate-500">Ladies' Hcp</p>
+              <p id="stat-ladies-hcp" class="mt-1 font-display text-2xl font-bold text-pine-900">{initialHoleData.ladiesHcp}</p>
+            </div>
+          </div>
+
+          <div class="mt-5 shrink-0 overflow-hidden rounded-lg border border-slate-200">
+            <p class="bg-slate-50 px-3 py-2 text-[10px] font-bold uppercase tracking-wide text-slate-500">Yardages</p>
+            <table class="w-full text-left text-sm">
+              <tbody>
+                <tr class="border-t border-slate-200 bg-[#244a82] text-white">
+                  <td class="px-3 py-2.5 text-xs font-semibold">Blue</td>
+                  <td id="stat-blue" class="px-3 py-2.5 text-xs font-semibold">{initialHoleData.blue} yds</td>
+                </tr>
+                <tr class="border-t border-slate-200">
+                  <td class="px-3 py-2.5 text-xs font-semibold text-pine-900">White</td>
+                  <td id="stat-white" class="px-3 py-2.5 text-xs text-slate-700">{initialHoleData.white} yds</td>
+                </tr>
+                <tr class="border-t border-slate-200 bg-[#812235] text-white">
+                  <td class="px-3 py-2.5 text-xs font-semibold">Red</td>
+                  <td id="stat-red" class="px-3 py-2.5 text-xs font-semibold">{initialHoleData.red} yds</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-auto pt-5">
+            <div class="flex gap-2">
+              <button
+                type="button"
+                data-hole-nav="prev"
+                class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md border border-pine-700 px-3 py-2.5 text-xs font-bold uppercase tracking-wide text-pine-800 transition hover:bg-pine-50"
+              >
+                <svg aria-hidden="true" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 0 1-.02 1.06L8.832 10l3.938 3.71a.75.75 0 1 1-1.04 1.08l-4.5-4.25a.75.75 0 0 1 0-1.08l4.5-4.25a.75.75 0 0 1 1.06.02Z" clip-rule="evenodd" />
+                </svg>
+                Prev
+              </button>
+              <button
+                type="button"
+                data-hole-nav="next"
+                class="inline-flex flex-1 items-center justify-center gap-1.5 rounded-md border border-pine-700 px-3 py-2.5 text-xs font-bold uppercase tracking-wide text-pine-800 transition hover:bg-pine-50"
+              >
+                Next
+                <svg aria-hidden="true" class="h-3.5 w-3.5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 0 1 .02-1.06L11.168 10 7.23 6.29a.75.75 0 1 1 1.04-1.08l4.5 4.25a.75.75 0 0 1 0 1.08l-4.5 4.25a.75.75 0 0 1-1.06-.02Z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+
+            <a
+              href="/course"
+              class="mt-4 block rounded-md bg-clubred-500 px-4 py-2.5 text-center text-xs font-bold uppercase tracking-wide text-white transition hover:bg-clubred-700"
+            >
+              View Scorecard
+            </a>
+          </div>
+        </aside>
+
+        <div id="video-card" class="order-1 h-fit overflow-hidden rounded-xl border border-slate-200 shadow-soft leading-[0] lg:order-none">
+          <video
+            id="flyover-video"
+            class="block w-full"
+            playsinline
+            controls
+            controlsList="nodownload"
+            preload="metadata"
+          />
+          <div
+            id="video-placeholder"
+            class="hidden aspect-video flex-col items-center justify-center gap-3 bg-slate-100 px-6 text-center"
+          >
+            <p class="font-display text-xl font-bold uppercase text-pine-900 sm:text-2xl">Flyover Coming Soon</p>
+            <p class="max-w-md text-sm text-slate-600">Aerial video for this hole will be added shortly.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script define:vars={{ courseHoles, initialHole }}>
+  const holesByNumber = new Map(courseHoles.map((hole) => [hole.hole, hole]));
+  const playbackTimes = new Map();
+  const holeSlider = document.getElementById("hole-slider");
+  const holeButtons = document.querySelectorAll("[data-hole]");
+  const video = document.getElementById("flyover-video");
+  const videoPlaceholder = document.getElementById("video-placeholder");
+  const holeTitle = document.getElementById("hole-title");
+  const statMenPar = document.getElementById("stat-men-par");
+  const statLadiesPar = document.getElementById("stat-ladies-par");
+  const statMenHcp = document.getElementById("stat-men-hcp");
+  const statLadiesHcp = document.getElementById("stat-ladies-hcp");
+  const statBlue = document.getElementById("stat-blue");
+  const statWhite = document.getElementById("stat-white");
+  const statRed = document.getElementById("stat-red");
+  const holeStats = document.getElementById("hole-stats");
+  const videoCard = document.getElementById("video-card");
+  const desktopQuery = window.matchMedia("(min-width: 1024px)");
+  const phoneLandscapeQuery = window.matchMedia("(orientation: landscape) and (max-height: 500px)");
+
+  let activeHole = initialHole;
+  let loadedVideoSrc = "";
+  let orientationFullscreenActive = false;
+  let userExitedOrientationFullscreen = false;
+
+  const isVideoFullscreen = () => {
+    return !!(
+      document.fullscreenElement ||
+      document.webkitFullscreenElement ||
+      video?.webkitDisplayingFullscreen
+    );
+  };
+
+  const canAutoFullscreen = () => {
+    return Boolean(loadedVideoSrc && !video.classList.contains("hidden"));
+  };
+
+  const enterOrientationFullscreen = async () => {
+    if (!canAutoFullscreen() || isVideoFullscreen() || userExitedOrientationFullscreen) {
+      return;
+    }
+
+    try {
+      if (typeof video.webkitEnterFullscreen === "function") {
+        video.webkitEnterFullscreen();
+        orientationFullscreenActive = true;
+        return;
+      }
+
+      const target = video.requestFullscreen ? video : videoCard;
+      if (target?.requestFullscreen) {
+        await target.requestFullscreen();
+        orientationFullscreenActive = true;
+      }
+    } catch {
+      // Fullscreen may be blocked until the user interacts with the page.
+    }
+  };
+
+  const exitOrientationFullscreen = async () => {
+    if (!isVideoFullscreen() && !orientationFullscreenActive) {
+      return;
+    }
+
+    try {
+      if (document.fullscreenElement && document.exitFullscreen) {
+        await document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    } catch {
+      // iOS native fullscreen usually exits automatically on rotate.
+    }
+
+    orientationFullscreenActive = false;
+  };
+
+  const handlePhoneOrientation = () => {
+    if (desktopQuery.matches) {
+      return;
+    }
+
+    if (phoneLandscapeQuery.matches) {
+      enterOrientationFullscreen();
+      return;
+    }
+
+    userExitedOrientationFullscreen = false;
+    exitOrientationFullscreen();
+  };
+
+  const onOrientationFullscreenEnd = () => {
+    if (phoneLandscapeQuery.matches && orientationFullscreenActive) {
+      userExitedOrientationFullscreen = true;
+    }
+    orientationFullscreenActive = false;
+  };
+
+  const syncStatsHeight = () => {
+    if (!holeStats || !videoCard) {
+      return;
+    }
+    if (desktopQuery.matches) {
+      holeStats.style.minHeight = `${videoCard.offsetHeight}px`;
+      holeStats.style.height = "auto";
+    } else {
+      holeStats.style.minHeight = "";
+      holeStats.style.height = "";
+    }
+  };
+
+  const scrollVideoIntoView = () => {
+    if (!videoCard) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      const rect = videoCard.getBoundingClientRect();
+      const navOffset = 65;
+      const padding = 20;
+      const viewportBottom = window.innerHeight;
+
+      if (rect.bottom > viewportBottom - padding) {
+        window.scrollBy({ top: rect.bottom - viewportBottom + padding, behavior: "smooth" });
+      }
+
+      if (rect.top < navOffset) {
+        window.scrollBy({ top: rect.top - navOffset, behavior: "smooth" });
+      }
+    });
+  };
+
+  const updateHoleContent = (holeNumber) => {
+    const hole = holesByNumber.get(holeNumber);
+    if (!hole) {
+      return;
+    }
+
+    holeTitle.textContent = `Hole ${hole.hole}`;
+    statMenPar.textContent = String(hole.menPar);
+    statLadiesPar.textContent = String(hole.ladiesPar);
+    statMenHcp.textContent = String(hole.menHcp);
+    statLadiesHcp.textContent = String(hole.ladiesHcp);
+    statBlue.textContent = `${hole.blue} yds`;
+    statWhite.textContent = `${hole.white} yds`;
+    statRed.textContent = `${hole.red} yds`;
+
+    holeButtons.forEach((button) => {
+      const selected = Number(button.dataset.hole) === holeNumber;
+      button.setAttribute("aria-selected", selected ? "true" : "false");
+      button.classList.toggle("border-clubred-500", selected);
+      button.classList.toggle("ring-2", selected);
+      button.classList.toggle("ring-clubred-500/30", selected);
+      button.classList.toggle("border-slate-200", !selected);
+
+      if (selected) {
+        button.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+      }
+    });
+  };
+
+  const pauseAndSave = () => {
+    if (!loadedVideoSrc) {
+      return;
+    }
+    playbackTimes.set(activeHole, video.currentTime);
+    video.pause();
+  };
+
+  const loadHoleVideo = (holeNumber) => {
+    const hole = holesByNumber.get(holeNumber);
+    if (!hole?.flyoverVideo) {
+      video.pause();
+      video.removeAttribute("src");
+      video.load();
+      loadedVideoSrc = "";
+      video.classList.add("hidden");
+      videoPlaceholder.classList.remove("hidden");
+      videoPlaceholder.classList.add("flex");
+      requestAnimationFrame(() => {
+        syncStatsHeight();
+        scrollVideoIntoView();
+      });
+      return;
+    }
+
+    videoPlaceholder.classList.add("hidden");
+    videoPlaceholder.classList.remove("flex");
+    video.classList.remove("hidden");
+
+    const resumeTime = playbackTimes.get(holeNumber) ?? 0;
+
+    const startPlayback = () => {
+      if (resumeTime > 0 && video.duration && resumeTime < video.duration) {
+        video.currentTime = resumeTime;
+      }
+      video.play().catch(() => {});
+    };
+
+    const onVideoReady = () => {
+      startPlayback();
+      requestAnimationFrame(() => {
+        syncStatsHeight();
+        if (!phoneLandscapeQuery.matches) {
+          scrollVideoIntoView();
+        }
+        handlePhoneOrientation();
+      });
+    };
+
+    if (loadedVideoSrc === hole.flyoverVideo) {
+      onVideoReady();
+      return;
+    }
+
+    loadedVideoSrc = hole.flyoverVideo;
+    video.src = hole.flyoverVideo;
+
+    if (video.readyState >= 1) {
+      onVideoReady();
+    } else {
+      video.addEventListener("loadedmetadata", onVideoReady, { once: true });
+    }
+  };
+
+  const selectHole = (holeNumber) => {
+    if (holeNumber === activeHole) {
+      return;
+    }
+
+    pauseAndSave();
+    activeHole = holeNumber;
+    updateHoleContent(holeNumber);
+    loadHoleVideo(holeNumber);
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("hole", String(holeNumber));
+    window.history.replaceState({}, "", url);
+  };
+
+  const showAdjacentHole = (delta) => {
+    const nextHole = Math.min(Math.max(activeHole + delta, 1), courseHoles.length);
+    selectHole(nextHole);
+  };
+
+  holeButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectHole(Number(button.dataset.hole));
+    });
+  });
+
+  document.querySelector('[data-hole-scroll="prev"]')?.addEventListener("click", () => {
+    holeSlider.scrollBy({ left: -400, behavior: "smooth" });
+  });
+
+  document.querySelector('[data-hole-scroll="next"]')?.addEventListener("click", () => {
+    holeSlider.scrollBy({ left: 400, behavior: "smooth" });
+  });
+
+  document.querySelector('[data-hole-nav="prev"]')?.addEventListener("click", () => {
+    showAdjacentHole(-1);
+  });
+
+  document.querySelector('[data-hole-nav="next"]')?.addEventListener("click", () => {
+    showAdjacentHole(1);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft" && !event.target.closest("input, textarea, select, video")) {
+      showAdjacentHole(-1);
+    }
+    if (event.key === "ArrowRight" && !event.target.closest("input, textarea, select, video")) {
+      showAdjacentHole(1);
+    }
+  });
+
+  const params = new URLSearchParams(window.location.search);
+  const requestedHole = Number(params.get("hole"));
+  const startHole =
+    Number.isInteger(requestedHole) && requestedHole >= 1 && requestedHole <= courseHoles.length
+      ? requestedHole
+      : initialHole;
+
+  activeHole = startHole;
+  updateHoleContent(startHole);
+  loadHoleVideo(startHole);
+
+  window.addEventListener("resize", () => {
+    syncStatsHeight();
+    if (!phoneLandscapeQuery.matches) {
+      scrollVideoIntoView();
+    }
+    handlePhoneOrientation();
+  });
+
+  phoneLandscapeQuery.addEventListener("change", handlePhoneOrientation);
+  window.addEventListener("orientationchange", () => {
+    window.setTimeout(handlePhoneOrientation, 150);
+  });
+
+  document.addEventListener("fullscreenchange", onOrientationFullscreenEnd);
+  document.addEventListener("webkitfullscreenchange", onOrientationFullscreenEnd);
+  video?.addEventListener("webkitendfullscreen", onOrientationFullscreenEnd);
+
+  video?.addEventListener("loadeddata", () => {
+    syncStatsHeight();
+    if (!phoneLandscapeQuery.matches) {
+      scrollVideoIntoView();
+    }
+    handlePhoneOrientation();
+  });
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      pauseAndSave();
+    } else if (loadedVideoSrc) {
+      video.play().catch(() => {});
+    }
+  });
+</script>

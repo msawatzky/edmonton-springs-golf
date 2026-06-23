@@ -3,3 +3,6 @@ dist/
 .astro/
 .DS_Store
 .env
+
+# Flyover videos hosted on R2
+public/videos/flyovers/
