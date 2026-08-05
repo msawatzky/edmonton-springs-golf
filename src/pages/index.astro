@@ -40,13 +40,13 @@ const bookingUrl =
             Open Full Booking Page
           </a>
         </div>
-        <p class="mb-4 text-sm text-slate-700">
-          Use the embedded booking tool below. If it does not load on your device, use "Open Full Booking Page".
-        </p>
-        <p class="mb-4 text-sm text-slate-700">
-          Posted rates on the booking site are for adult players. Adjustments will be made at the golf course at check
-          in for other players.
-        </p>
+        <div class="mb-4 rounded-lg border border-clubred-500/30 bg-clubred-100 p-4 sm:p-5">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-clubred-700">Please Note</p>
+          <p class="mt-2 text-sm font-semibold leading-relaxed text-slate-900 sm:text-base">
+            Posted rates on the booking site are for adult players. Adjustments will be made at the golf course at check
+            in for other players.
+          </p>
+        </div>
         <div class="overflow-hidden rounded-xl border border-slate-200">
           <iframe
             src={bookingUrl}
