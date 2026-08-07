@@ -15,10 +15,15 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   {
-    label: "Golf",
+    label: "Rates",
     children: [
-      { href: "/rates", label: "Rates" },
-      { href: "/membership", label: "Membership" },
+      { href: "/rates", label: "Green Fees & Range" },
+      { href: "/membership", label: "Memberships" },
+    ],
+  },
+  {
+    label: "Events",
+    children: [
       { href: "/leagues", label: "Leagues" },
       { href: "/tournaments", label: "Tournaments" },
     ],
@@ -27,8 +32,8 @@ const navItems: NavItem[] = [
     label: "Course",
     children: [
       { href: "/course", label: "Map & Scorecard" },
-      { href: "/course/tour", label: "Course Tour" },
-      { href: "/gallery", label: "Photo Gallery" },
+      { href: "/course/tour", label: "Tour" },
+      { href: "/gallery", label: "Gallery" },
     ],
   },
   { label: "Instruction", href: "/youth" },

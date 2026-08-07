@@ -1,6 +1,6 @@
 # Edmonton Springs Golf Course Website
 
-Static marketing site for Edmonton Springs Golf Course, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). The site is deployed to **Cloudflare Pages** and serves `https://www.edmontonspringsgolfcourse.com`.
+Static marketing site for Edmonton Springs Golf Course, built with [Astro](https://astro.build) and [Tailwind CSS](https://tailwindcss.com). The site is deployed to **Cloudflare Pages** and serves `https://www.edmontonspringsgolf.com`.
 
 ---
 
@@ -52,7 +52,7 @@ The site currently spans **three providers** with assets split across **two Clou
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │  Wix (domain registrar / DNS)                                   │
-│  edmontonspringsgolfcourse.com                                  │
+│  edmontonspringsgolf.com                                        │
 │       │                                                         │
 │       └── DNS points to ──► Cloudflare Pages (personal account) │
 │                              Astro static site (this repo)      │
@@ -97,7 +97,7 @@ There is no server-side runtime. All dynamic behavior (announcement expiry, cour
    | Node version | 18 or 20 (set in Environment variables if needed) |
 
 3. **Environment variables** — Add every `PUBLIC_*` variable from [Environment Variables](#environment-variables) in the Pages project settings (Production and Preview as needed). These are baked in at build time.
-4. **Custom domain** — `www.edmontonspringsgolfcourse.com` is attached in Pages; Wix DNS currently points the domain at Cloudflare.
+4. **Custom domain** — `www.edmontonspringsgolf.com` is attached in Pages; Wix DNS points `www` at Cloudflare. The apex (`edmontonspringsgolf.com`) still resolves to Wix until DNS is updated.
 5. **Deploy** — Pushes to the connected branch trigger automatic builds. You can also trigger a manual redeploy from the dashboard.
 
 ### Production URL
@@ -105,7 +105,7 @@ There is no server-side runtime. All dynamic behavior (announcement expiry, cour
 The canonical site URL is set in `astro.config.mjs`:
 
 ```js
-site: "https://www.edmontonspringsgolfcourse.com"
+site: "https://www.edmontonspringsgolf.com"
 ```
 
 This value is used for league form return URLs after FormSubmit redirects.
@@ -251,7 +251,7 @@ Thumbnails in `public/images/flyovers/thumbs/` are committed to git and served f
 
 ### 3. External / legacy links
 
-Some pages still link to the old Wix site (e.g. map on `/contact` → `edmontonspringsgolf.com`). These will be updated when the domain moves to Cloudflare.
+Some pages still link to legacy Wix URLs (e.g. `/contact-us` on `/contact`). Update or remove these as pages are migrated.
 
 ---
 
@@ -297,7 +297,7 @@ Two consolidations are planned for the **off-season** when traffic is lower and 
 
 ### 2. Domain: Wix → Cloudflare
 
-**Goal:** Move `edmontonspringsgolfcourse.com` registration and DNS from Wix to Cloudflare.
+**Goal:** Move `edmontonspringsgolf.com` registration and DNS from Wix to Cloudflare.
 
 **Checklist:**
 
