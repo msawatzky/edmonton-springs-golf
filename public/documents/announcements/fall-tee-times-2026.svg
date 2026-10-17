@@ -1,58 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1228" viewBox="0 0 800 1228" role="img" aria-labelledby="title desc">
-  <title id="title">Fall tee times and fall special</title>
-  <desc id="desc">New crossover tee times start Tuesday, October 13. A foursome playing 18 with carts is $210 plus GST when all four players pay together.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1248" viewBox="0 0 800 1248" role="img" aria-labelledby="title desc">
+  <title id="title">Fall tee times, maintenance closure, and last day</title>
+  <desc id="desc">Closed for maintenance on Monday, October 19, 2026. Last day of the 2026 season is Wednesday, October 21, 2026. Crossover tee times run 11:00 am to 1:00 pm, with 9 holes only from 3:15 to 4:15. A foursome playing 18 with carts is $210 plus GST when all four players pay together.</desc>
 
-  <rect width="800" height="1228" fill="#f6efe4"/>
-  <rect width="800" height="188" fill="#8c3f1e"/>
+  <rect width="800" height="1248" fill="#f6efe4"/>
+  <rect width="800" height="156" fill="#8c3f1e"/>
 
-  <text x="400" y="64" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="5">EDMONTON SPRINGS</text>
-  <text x="400" y="122" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Fall Tee Times</text>
-  <text x="400" y="162" text-anchor="middle" fill="#fff1d6" font-family="Georgia, 'Times New Roman', serif" font-size="22">Starting Tuesday, October 13</text>
+  <text x="400" y="58" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="5">EDMONTON SPRINGS</text>
+  <text x="400" y="118" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="52" font-weight="700">Fall Tee Times</text>
+
+  <text x="400" y="216" text-anchor="middle" fill="#8c3f1e" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">Closed for maintenance</text>
+  <text x="400" y="254" text-anchor="middle" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Monday, October 19, 2026</text>
+  <text x="400" y="312" text-anchor="middle" fill="#8c3f1e" font-family="Georgia, 'Times New Roman', serif" font-size="28" font-weight="700">Last day of the 2026 season</text>
+  <text x="400" y="350" text-anchor="middle" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Wednesday, October 21, 2026</text>
 
   <text fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="25">
-    <tspan x="48" y="268">As</tspan>
-    <tspan x="90.29" y="268">the</tspan>
-    <tspan x="140.28" y="268">season</tspan>
-    <tspan x="229.53" y="268">closes,</tspan>
-    <tspan x="316.66" y="268">cold</tspan>
-    <tspan x="377.71" y="268">mornings</tspan>
-    <tspan x="498.57" y="268">and</tspan>
-    <tspan x="555.01" y="268">warm</tspan>
-    <tspan x="633.02" y="268">afternoons</tspan>
-    <tspan x="48" y="310">are</tspan>
-    <tspan x="90.93" y="310">common,</tspan>
-    <tspan x="202.79" y="310">so</tspan>
-    <tspan x="235.07" y="310">new</tspan>
-    <tspan x="288.36" y="310">tee</tspan>
-    <tspan x="329.17" y="310">time</tspan>
-    <tspan x="387.23" y="310">hours</tspan>
-    <tspan x="458.69" y="310">start</tspan>
-    <tspan x="517.6" y="310">Tuesday,</tspan>
-    <tspan x="624.33" y="310">October</tspan>
-    <tspan x="720.73" y="310">13.</tspan>
+    <tspan x="48" y="416">As</tspan>
+    <tspan x="90.29" y="416">the</tspan>
+    <tspan x="140.28" y="416">season</tspan>
+    <tspan x="229.53" y="416">closes,</tspan>
+    <tspan x="316.66" y="416">cold</tspan>
+    <tspan x="377.71" y="416">mornings</tspan>
+    <tspan x="498.57" y="416">and</tspan>
+    <tspan x="555.01" y="416">warm</tspan>
+    <tspan x="633.02" y="416">afternoons</tspan>
+    <tspan x="48" y="458">are</tspan>
+    <tspan x="99.08" y="458">common,</tspan>
+    <tspan x="219.1" y="458">so</tspan>
+    <tspan x="259.54" y="458">these</tspan>
+    <tspan x="333.85" y="458">later</tspan>
+    <tspan x="400.72" y="458">tee</tspan>
+    <tspan x="449.68" y="458">time</tspan>
+    <tspan x="515.9" y="458">hours</tspan>
+    <tspan x="595.51" y="458">are</tspan>
+    <tspan x="646.6" y="458">in</tspan>
+    <tspan x="684.85" y="458">effect.</tspan>
   </text>
 
-  <text x="56" y="400" fill="#8c3f1e" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Crossover method</text>
-  <text x="56" y="444" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">We will be using the crossover method.</text>
+  <text x="56" y="528" fill="#8c3f1e" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700">Crossover method</text>
+  <text x="56" y="572" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">We will be using the crossover method.</text>
 
-  <rect x="48" y="476" width="704" height="148" rx="12" fill="#fffaf3"/>
-  <text x="76" y="530" fill="#b8431f" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">11:00 am to 1:00 pm</text>
-  <text x="76" y="572" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Tee times run for two hours.</text>
-  <text x="76" y="606" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Then early groups cross over.</text>
+  <rect x="48" y="604" width="704" height="148" rx="12" fill="#fffaf3"/>
+  <text x="76" y="658" fill="#b8431f" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">11:00 am to 1:00 pm</text>
+  <text x="76" y="700" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Tee times run for two hours.</text>
+  <text x="76" y="734" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="24">Then early groups cross over.</text>
 
-  <rect x="48" y="644" width="704" height="112" rx="12" fill="#4d5c38"/>
-  <text x="76" y="694" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">3:15 to 4:15</text>
-  <text x="76" y="732" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">Golfers can book 9 holes only.</text>
+  <rect x="48" y="772" width="704" height="112" rx="12" fill="#4d5c38"/>
+  <text x="76" y="822" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">3:15 to 4:15</text>
+  <text x="76" y="860" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">Golfers can book 9 holes only.</text>
 
-  <text x="56" y="808" fill="#6b5344" font-family="Georgia, 'Times New Roman', serif" font-size="22">
-    <tspan x="56" dy="0">This continues for the balance of the season</tspan>
-    <tspan x="56" dy="34">until cold temperatures bring the season to a close.</tspan>
-  </text>
-
-  <rect x="48" y="888" width="704" height="283" rx="12" fill="#c45c26"/>
-  <text x="400" y="944" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="4">FALL SPECIAL</text>
-  <text x="400" y="992" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">A foursome playing 18 with carts</text>
-  <text x="400" y="1026" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">pays only</text>
-  <text x="400" y="1092" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">$210 + GST</text>
-  <text x="400" y="1128" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="16">All 4 players must pay at the till together.</text>
+  <rect x="48" y="916" width="704" height="283" rx="12" fill="#c45c26"/>
+  <text x="400" y="972" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="4">FALL SPECIAL</text>
+  <text x="400" y="1020" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">A foursome playing 18 with carts</text>
+  <text x="400" y="1054" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="24">pays only</text>
+  <text x="400" y="1120" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="56" font-weight="700">$210 + GST</text>
+  <text x="400" y="1156" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="16">All 4 players must pay at the till together.</text>
 </svg>

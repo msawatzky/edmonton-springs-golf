@@ -18,8 +18,8 @@ export const announcements: Announcement[] = [
     order: 1,
     imageSrc: "/documents/announcements/fall-tee-times-2026.svg",
     imageAlt:
-      "Fall tee times starting Tuesday, October 13. Crossover method: tee times from 11:00 am to 1:00 pm, then early groups cross over. From 3:15 to 4:15, 9 holes only. Continues until cold temperatures close the season. Fall special: a foursome playing 18 with carts pays $210 plus GST. All 4 players must pay at the till together.",
-    expiresOn: "2026-11-16"
+      "Closed for maintenance on Monday, October 19, 2026. Last day of the 2026 season is Wednesday, October 21, 2026. Fall tee times use the crossover method from 11:00 am to 1:00 pm, then early groups cross over. From 3:15 to 4:15, 9 holes only. Fall special: a foursome playing 18 with carts pays $210 plus GST. All 4 players must pay at the till together.",
+    expiresOn: "2026-10-22"
   }
 ];
 
