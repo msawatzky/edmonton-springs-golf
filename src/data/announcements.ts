@@ -14,8 +14,16 @@ export interface Announcement {
  */
 export const announcements: Announcement[] = [
   {
-    id: "fall-tee-times-2026",
+    id: "closed-for-season-2026",
     order: 1,
+    imageSrc: "/documents/announcements/closed-for-season-2026.svg",
+    imageAlt:
+      "Edmonton Springs Golf Course is closed for the season. The last day of the 2026 season was Wednesday, October 21, 2026. We will see you again in spring 2027. Call the Pro Shop at (780) 962-6500 with questions.",
+    expiresOn: "2027-04-20"
+  },
+  {
+    id: "fall-tee-times-2026",
+    order: 2,
     imageSrc: "/documents/announcements/fall-tee-times-2026.svg",
     imageAlt:
       "Closed for maintenance on Monday, October 19, 2026. Last day of the 2026 season is Wednesday, October 21, 2026. Fall tee times use the crossover method from 11:00 am to 1:00 pm, then early groups cross over. From 3:15 to 4:15, 9 holes only. Fall special: a foursome playing 18 with carts pays $210 plus GST. All 4 players must pay at the till together.",
