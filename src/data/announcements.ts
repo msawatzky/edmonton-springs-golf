@@ -21,16 +21,16 @@ export const announcements: Announcement[] = [
     order: 1,
     imageSrc: "/documents/announcements/open-one-more-week-2026.svg",
     imageAlt:
-      "Edmonton Springs Golf Course is open for one more week. The last day is Saturday, November 14, 2026. Call the Pro Shop at (780) 962-6500 with questions.",
-    expiresOn: "2026-11-15"
+      "Edmonton Springs Golf Course is open for one more week. The last day is Sunday, November 15, 2026. Call the Pro Shop at (780) 962-6500 with questions.",
+    expiresOn: "2026-11-16"
   },
   {
     id: "closed-for-season-2026",
     order: 2,
     imageSrc: "/documents/announcements/closed-for-season-2026.svg",
     imageAlt:
-      "Edmonton Springs Golf Course is closed for the season. The last day of the 2026 season was Saturday, November 14, 2026. We will see you again in spring 2027. Call the Pro Shop at (780) 962-6500 with questions.",
-    startsOn: "2026-11-15",
+      "Edmonton Springs Golf Course is closed for the season. The last day of the 2026 season was Sunday, November 15, 2026. We will see you again in spring 2027. Call the Pro Shop at (780) 962-6500 with questions.",
+    startsOn: "2026-11-16",
     expiresOn: "2027-04-20"
   },
   {
@@ -43,7 +43,7 @@ export const announcements: Announcement[] = [
   }
 ];
 
-export const ANNOUNCEMENTS_AUTO_SHOWN_KEY = "esg-announcements-auto-shown-v2";
+export const ANNOUNCEMENTS_AUTO_SHOWN_KEY = "esg-announcements-auto-shown-v3";
 
 export function getActiveAnnouncements(items: Announcement[], now: Date = new Date()): Announcement[] {
   const today = new Date(now);
