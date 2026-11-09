@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="900" viewBox="0 0 800 900" role="img" aria-labelledby="title desc">
+  <title id="title">Open one more week</title>
+  <desc id="desc">Edmonton Springs Golf Course is open for one more week. The last day is Saturday, November 14, 2026. Call the Pro Shop at (780) 962-6500 with questions.</desc>
+
+  <rect width="800" height="900" fill="#f6efe4"/>
+  <rect width="800" height="168" fill="#4d5c38"/>
+
+  <text x="400" y="62" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="20" letter-spacing="5">EDMONTON SPRINGS</text>
+  <text x="400" y="124" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="44" font-weight="700">Open One More Week</text>
+
+  <text x="400" y="250" text-anchor="middle" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="28">The course is open again.</text>
+  <text x="400" y="294" text-anchor="middle" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="28">Come out and play this week.</text>
+
+  <rect x="48" y="348" width="704" height="168" rx="12" fill="#8c3f1e"/>
+  <text x="400" y="410" text-anchor="middle" fill="#f3d7a4" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="4">LAST DAY</text>
+  <text x="400" y="468" text-anchor="middle" fill="#fff8ee" font-family="Georgia, 'Times New Roman', serif" font-size="34" font-weight="700">Saturday, November 14, 2026</text>
+
+  <rect x="48" y="560" width="704" height="248" rx="12" fill="#fffaf3"/>
+  <text x="400" y="624" text-anchor="middle" fill="#b8431f" font-family="Georgia, 'Times New Roman', serif" font-size="18" letter-spacing="4">QUESTIONS</text>
+  <text x="400" y="680" text-anchor="middle" fill="#4a3424" font-family="Georgia, 'Times New Roman', serif" font-size="28">Call the Pro Shop</text>
+  <text x="400" y="740" text-anchor="middle" fill="#8c3f1e" font-family="Georgia, 'Times New Roman', serif" font-size="40" font-weight="700">(780) 962-6500</text>
+</svg>

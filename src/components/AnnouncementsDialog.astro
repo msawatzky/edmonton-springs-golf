@@ -1,5 +1,5 @@
 ---
-import { announcements } from "../data/announcements";
+import { announcements, ANNOUNCEMENTS_AUTO_SHOWN_KEY } from "../data/announcements";
 ---
 
 <dialog
@@ -66,8 +66,8 @@ import { announcements } from "../data/announcements";
   </div>
 </dialog>
 
-<script define:vars={{ announcements }}>
-  const STORAGE_KEY = "esg-announcements-auto-shown";
+<script define:vars={{ announcements, storageKey: ANNOUNCEMENTS_AUTO_SHOWN_KEY }}>
+  const STORAGE_KEY = storageKey;
 
   const dialog = document.getElementById("announcements-dialog");
   if (!dialog) {
@@ -92,6 +92,13 @@ import { announcements } from "../data/announcements";
 
     return announcements
       .filter((item) => {
+        if (item.startsOn) {
+          const start = new Date(`${item.startsOn}T00:00:00`);
+          if (today < start) {
+            return false;
+          }
+        }
+
         const expiry = new Date(`${item.expiresOn}T00:00:00`);
         return today < expiry;
       })

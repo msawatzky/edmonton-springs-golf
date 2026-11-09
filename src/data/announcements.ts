@@ -4,6 +4,8 @@ export interface Announcement {
   order: number;
   imageSrc: string;
   imageAlt: string;
+  /** First calendar day this announcement is shown (YYYY-MM-DD). Omit to show immediately. */
+  startsOn?: string;
   /** First calendar day this announcement is hidden (YYYY-MM-DD). */
   expiresOn: string;
 }
@@ -11,14 +13,24 @@ export interface Announcement {
 /**
  * Add or remove posters here. Set `expiresOn` to the first day the poster should stop showing.
  * Posters with `expiresOn: "2026-07-02"` are visible through July 1, 2026.
+ * Set `startsOn` to hold a poster until that calendar day.
  */
 export const announcements: Announcement[] = [
   {
-    id: "closed-for-season-2026",
+    id: "open-one-more-week-2026",
     order: 1,
+    imageSrc: "/documents/announcements/open-one-more-week-2026.svg",
+    imageAlt:
+      "Edmonton Springs Golf Course is open for one more week. The last day is Saturday, November 14, 2026. Call the Pro Shop at (780) 962-6500 with questions.",
+    expiresOn: "2026-11-15"
+  },
+  {
+    id: "closed-for-season-2026",
+    order: 2,
     imageSrc: "/documents/announcements/closed-for-season-2026.svg",
     imageAlt:
-      "Edmonton Springs Golf Course is closed for the season. The last day of the 2026 season was Wednesday, October 21, 2026. We will see you again in spring 2027. Call the Pro Shop at (780) 962-6500 with questions.",
+      "Edmonton Springs Golf Course is closed for the season. The last day of the 2026 season was Saturday, November 14, 2026. We will see you again in spring 2027. Call the Pro Shop at (780) 962-6500 with questions.",
+    startsOn: "2026-11-15",
     expiresOn: "2027-04-20"
   },
   {
@@ -31,7 +43,7 @@ export const announcements: Announcement[] = [
   }
 ];
 
-export const ANNOUNCEMENTS_AUTO_SHOWN_KEY = "esg-announcements-auto-shown";
+export const ANNOUNCEMENTS_AUTO_SHOWN_KEY = "esg-announcements-auto-shown-v2";
 
 export function getActiveAnnouncements(items: Announcement[], now: Date = new Date()): Announcement[] {
   const today = new Date(now);
@@ -39,6 +51,13 @@ export function getActiveAnnouncements(items: Announcement[], now: Date = new Da
 
   return items
     .filter((item) => {
+      if (item.startsOn) {
+        const start = new Date(`${item.startsOn}T00:00:00`);
+        if (today < start) {
+          return false;
+        }
+      }
+
       const expiry = new Date(`${item.expiresOn}T00:00:00`);
       return today < expiry;
     })
